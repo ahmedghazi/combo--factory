@@ -11,7 +11,7 @@ import CardStudio from "../ui/CardStudio";
 import ContentStudio from "../ContentStudio";
 import clsx from "clsx";
 import AOS from "../ui/AOS";
-import { subscribe, unsubscribe } from "pubsub-js";
+import { publish, subscribe, unsubscribe } from "pubsub-js";
 
 type Props = {
   input: ListStudioUI;
@@ -28,7 +28,7 @@ const ModuleListStudioUI = ({ input }: Props) => {
         ".grid article.is-active"
       );
 
-      console.log(activeItem);
+      // console.log(activeItem);
       if (activeItem) {
         const inner = activeItem.querySelector(".inner");
         if (inner) {
@@ -44,6 +44,8 @@ const ModuleListStudioUI = ({ input }: Props) => {
           }
 
           const detailBounding = detailRef.current?.getBoundingClientRect();
+          // console.log(detailBounding);
+          // console.log(detailBounding?.height);
           activeItem.style.paddingBottom = `${detailBounding?.height}px`;
         }
 
@@ -64,10 +66,10 @@ const ModuleListStudioUI = ({ input }: Props) => {
   }, [detail, _onResize]);
 
   const _handleDetail = (event: MouseEvent, itemData: Studio) => {
-    // console.log(itemData);
+    console.log(event.type);
     const target = event.target as Element;
     target.classList.toggle("is-active");
-    console.log(target);
+    // console.log(target);
     if (!target.classList.contains("is-active")) {
       const articles: NodeListOf<HTMLElement> =
         document.querySelectorAll(".grid article");
@@ -99,12 +101,20 @@ const ModuleListStudioUI = ({ input }: Props) => {
     setDetail(null);
     if (detailRef.current) detailRef.current.style.display = "none";
 
-    const activeItem = document.querySelector<HTMLElement>(
+    // const activeItem = document.querySelector<HTMLElement>(
+    //   ".grid article.is-active"
+    // );
+    // if (activeItem) {
+    //   activeItem.style.paddingBottom = "0";
+    // }
+    const articles: NodeListOf<HTMLElement> = document.querySelectorAll(
       ".grid article.is-active"
     );
-    if (activeItem) {
-      activeItem.style.paddingBottom = "0";
-    }
+    articles.forEach((el) => {
+      el.classList.remove("is-active");
+      el.style.paddingBottom = "0";
+    });
+    publish("LIST_STUDIO_DETAIL_CHANGE");
   };
 
   return (
@@ -120,7 +130,7 @@ const ModuleListStudioUI = ({ input }: Props) => {
             key={i}
             input={item}
             _onClick={(event: MouseEvent) => {
-              console.log(event);
+              // console.log(event);
               _handleDetail(event, item);
             }}
           />

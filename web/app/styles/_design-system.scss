@@ -1,3 +1,15 @@
+.cartouche {
+  padding: 0.4em toRem(60);
+  font-family: var(--font-primary-mono);
+  background-color: white;
+  color: black;
+  font-size: var(--text-lg);
+  text-transform: uppercase;
+  &--sm {
+    padding: 0.4em 1em;
+    font-size: var(--text-sm);
+  }
+}
 .btn--pill {
   border: var(--border);
   padding: 0 toRem(60) 0.1em;
@@ -68,24 +80,31 @@
 
 .summary-detail {
   .summary {
-    // @include debugFiletY(50%);
     padding: toRem(30) 0 toRem(20);
     .icon-arrow {
       position: absolute;
       right: var(--space-50);
     }
+
     .title {
       text-align: center;
       text-transform: uppercase;
-      // padding: toRem(25) 0;
-      // height: 100px;
-      // line-height: 100px;
+
       h2 {
         margin: 0;
         line-height: 1;
       }
     }
-    .detail {
+  }
+  @media all and (max-width: $md) {
+    .summary {
+      .icon-arrow {
+        right: var(--space-lg);
+        svg {
+          width: auto;
+          height: var(--text-m-xl);
+        }
+      }
     }
   }
 }

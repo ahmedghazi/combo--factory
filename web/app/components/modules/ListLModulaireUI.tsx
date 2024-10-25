@@ -12,7 +12,7 @@ const ModuleListLModulaireUI = ({ input }: Props) => {
   return (
     <section className="module module--list-modulaire-ui">
       <SummaryDetailFramer
-        summary={<h2 className="text-xl">{_localizeField(input.title)}</h2>}
+        summary={<h2 className="headline">{_localizeField(input.title)}</h2>}
         detail={
           <>{input.items && <ContentModulaire modules={input.items} />}</>
         }

@@ -85,7 +85,7 @@ const ContentStudio = ({ input }: Props) => {
             <div className="col-md-10 col-xs-12">
               <AOS>
                 <div className="header mb-xl">
-                  <div className="location btn--pill">{location}</div>
+                  <div className="location cartouche">{location}</div>
                   <h4 className="headline text-center">
                     <div>{_localizeField(title)}</div>
                   </h4>

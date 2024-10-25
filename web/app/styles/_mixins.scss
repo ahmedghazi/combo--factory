@@ -641,6 +641,7 @@ $browser-context: 14;
 }
 
 @function toRem($value) {
-  $remValue: ($value / 16) + rem;
+  $newVal: $value / 16;
+  $remValue: $newVal + rem;
   @return $remValue;
 }

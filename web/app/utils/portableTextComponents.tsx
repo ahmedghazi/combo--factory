@@ -64,12 +64,13 @@ const portableTextComponents: PortableTextComponents = {
       );
     },
     linkExternal: ({ children, value }) => {
+      // console.log(value);
       return (
         <a
           href={value.href}
           rel={"noreferrer noopener"}
           target="_blank"
-          className={value.cta && "btn--pill"}
+          className={value.cta ? "btn--pill" : ""}
         >
           {children}
         </a>

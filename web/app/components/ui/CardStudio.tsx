@@ -1,8 +1,9 @@
 import { Figure, LocaleString, LocaleText, Studio } from "@/app/types/schema";
-import React, { MouseEvent } from "react";
+import React, { MouseEvent, useEffect } from "react";
 import FigureUI from "./Figure";
 import { _localizeField, _localizeText } from "@/app/utils/utils";
 import AOS from "./AOS";
+import { subscribe } from "pubsub-js";
 
 type Props = {
   input: Studio;
@@ -11,6 +12,14 @@ type Props = {
 
 const CardStudio = ({ input, _onClick }: Props) => {
   const { imageCover, title, excerpt, location } = input;
+
+  // useEffect(() => {
+  //   //LIST_STUDIO_DETAIL_CHANGE
+  //   const token = subscribe("LIST_STUDIO_DETAIL_CHANGE", (e, d) => {
+
+  //   })
+  // }, [])
+
   const onClick = (event: MouseEvent<HTMLElement>) => {
     /**
      * RESET all others
@@ -43,9 +52,11 @@ const CardStudio = ({ input, _onClick }: Props) => {
                 </button>
               </div>
             </div>
-            <div className="header flex justify-between items-baseline">
+            <div className="header flex justify-between items-center">
               {title && <h3>{_localizeField(title)}</h3>}
-              {location && <span>{location}</span>}
+              {location && (
+                <span className="cartouche cartouche--sm">{location}</span>
+              )}
             </div>
             {excerpt && <p className="excerpt">{_localizeField(excerpt)}</p>}
           </div>

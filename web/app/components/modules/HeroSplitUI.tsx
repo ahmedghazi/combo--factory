@@ -5,6 +5,7 @@ import Image from "next/image";
 import { infinitScroll } from "@/app/utils/infinite-scroll-plugin";
 import { _localizeField } from "@/app/utils/utils";
 import AOS from "../ui/AOS";
+import useDeviceDetect from "@/app/hooks/useDeviceDetect";
 
 type Props = {
   input: HeroSplitUI;
@@ -15,10 +16,11 @@ const ModuleHeroSplitUI = ({ input }: Props) => {
 
   // const _titleLeftLocalized = _localizeField(titleLeft);
   // const _titleRightLocalized = _localizeField(titleRight);
-
+  const { isMobile } = useDeviceDetect();
+  const scale = isMobile ? 0.2 : 0.4;
   return (
     <section className="module module--hero-split-ui">
-      <div className="grid md:grid-cols-2">
+      <div className="grid grid-cols-2">
         {itemsLeft && itemsLeft.image && (
           <div className="item">
             <Image
@@ -65,7 +67,7 @@ const ModuleHeroSplitUI = ({ input }: Props) => {
         height="595.28"
         viewBox="0 0 841.89 595.28"
         style={{
-          transform: `translate(-50%, -50%) scale(0.4)`,
+          transform: `translate(-50%, -50%) scale(${scale})`,
         }}
       >
         <path

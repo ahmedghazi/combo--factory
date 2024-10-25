@@ -51,7 +51,7 @@ const NavPrimary = ({ input }: Props) => {
   // console.log(input);
   return (
     <nav>
-      <ul className='menu flex justify-end'>
+      <ul className="menu flex justify-center">
         {input.map((item, i) => (
           <li key={i}>
             <NavLink
@@ -68,13 +68,14 @@ const NavPrimary = ({ input }: Props) => {
             />
             {item._type === "linkInternal" &&
               isLinkInternalWithSubmenu(item) && (
-                <ul className='sub-menu'>
+                <ul className="sub-menu">
                   {item.link?._type === "pageModulaire" &&
                     item.link.subMenu &&
                     item.link.subMenu.map((subItem: KeyVal, j: number) => (
                       <li key={j}>
                         <Link
-                          href={`${_linkResolver(item.link)}#${subItem.val}`}>
+                          href={`${_linkResolver(item.link)}#${subItem.val}`}
+                        >
                           {_localizeField(subItem.key)}
                         </Link>
                       </li>
@@ -83,7 +84,7 @@ const NavPrimary = ({ input }: Props) => {
               )}
 
             {item._type === "menuItem" && isMenuItemWithSubmenu(item) && (
-              <ul className='sub-menu'>
+              <ul className="sub-menu">
                 {item.subMenu?.map((subItem, j) => (
                   <li key={j}>
                     <Link href={_linkResolver(subItem.link)}>

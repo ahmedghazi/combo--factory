@@ -3,6 +3,7 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import clsx from "clsx";
 import { publish } from "pubsub-js";
+import { useAnimate } from "framer-motion";
 
 type Props = {
   summary: ReactNode;
@@ -12,25 +13,46 @@ const SummaryDetailFramer = ({ summary, detail }: Props) => {
   const [expand, setExpand] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const controls = useAnimation();
-  const variants = {
-    expanded: { opacity: 1, height: "auto" },
-    collapsed: { opacity: 0, height: 0 },
-  };
+  const [scope, animate] = useAnimate();
+  // const controls = useAnimation();
+  // const variants = {
+  //   expanded: { opacity: 1, height: "auto" },
+  //   collapsed: { opacity: 0, height: 0 },
+  // };
 
   useEffect(() => {
+    // console.log(expand, scope);
     if (expand) {
-      controls.start("expanded");
+      // controls.start("expanded");
+      animate(
+        scope.current,
+        { opacity: 1, height: "auto" },
+        {
+          duration: 0.3,
+          onComplete: () => {
+            publish("SUMMARY_DETAIL_CHANGE");
+          },
+        }
+      );
       if (ref && ref.current) {
         ref.current.scrollIntoView({
           behavior: "smooth",
         });
       }
-      publish("SUMMARY_DETAIL_CHANGE");
     } else {
-      controls.start("collapsed");
+      // controls.start("collapsed");
+      animate(
+        scope.current,
+        { opacity: 0, height: 0 },
+        {
+          duration: 0.3,
+          onComplete: () => {
+            publish("SUMMARY_DETAIL_CHANGE");
+          },
+        }
+      );
     }
-  }, [expand, controls]);
+  }, [expand]);
 
   // useEffect(() => {
   //   onOpen(expand)
@@ -69,15 +91,22 @@ const SummaryDetailFramer = ({ summary, detail }: Props) => {
         </div>
       </div>
       <div className="detail">
-        <motion.div
+        {/* <motion.div
           initial="collapsed"
           className="z-0 overflow-hidden"
           animate={controls}
           variants={variants}
           transition={{ duration: 0.3 }}
+          onAnimationEnd={() => {
+            console.log("anime end");
+            publish("SUMMARY_DETAIL_CHANGE");
+          }}
         >
           {detail}
-        </motion.div>
+        </motion.div> */}
+        <div className="z-0 overflow-hidden" ref={scope}>
+          {detail}
+        </div>
       </div>
     </div>
   );

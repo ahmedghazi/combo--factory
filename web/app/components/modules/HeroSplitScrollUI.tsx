@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Figure, HeroSplitScrollUI } from "@/app/types/schema";
 import { urlFor } from "@/app/utils/sanity-utils";
 import Image from "next/image";
-import { infinitScroll } from "@/app/utils/infinite-scroll-plugin";
 import { _localizeField } from "@/app/utils/utils";
-// import { infinitScrol } from "@/app/utils/infinite-scroll-plugin-one-page";
+import { infinitScroll } from "@/app/utils/infinite-scroll-plugin";
+import { infinitScrollOnePage } from "@/app/utils/infinite-scroll-plugin-one-page";
+import useDeviceDetect from "@/app/hooks/useDeviceDetect";
 
 type Props = {
   input: HeroSplitScrollUI;
@@ -19,6 +20,8 @@ const ModuleHeroSplitScrollUI = ({ input }: Props) => {
   const [rotate, setRotate] = useState<number>(0);
   const [loadCount, setLoadCount] = useState<number>(0);
   const [ready, setReady] = useState<boolean>(false);
+  const { isMobile } = useDeviceDetect();
+  const scale = isMobile ? 0.2 : 0.4;
 
   useEffect(() => {
     if (!ready) return;
@@ -28,19 +31,21 @@ const ModuleHeroSplitScrollUI = ({ input }: Props) => {
           ".column--left article"
         ) as NodeListOf<HTMLElement>
       );
-      infinitScroll(ref.current, itemsLeft, "down", onScroll, true);
+      infinitScrollOnePage(ref.current, itemsLeft, "down", onScroll, true);
 
       const itemsRight = Array.from(
         ref.current.querySelectorAll(
           ".column--right article"
         ) as NodeListOf<HTMLElement>
       );
-      infinitScroll(ref.current, itemsRight, "up", onScroll, true);
+      infinitScrollOnePage(ref.current, itemsRight, "up", onScroll, true);
     }
   }, [ready]);
 
   const onScroll = (val: number) => {
-    setRotate(val * 0.6);
+    // const nextVal = rotate + 180 * val;
+    // console.log(val);
+    setRotate(val);
   };
 
   const _handleImagesLoaded = () => {
@@ -57,7 +62,7 @@ const ModuleHeroSplitScrollUI = ({ input }: Props) => {
 
   return (
     <section className="module module--hero-split-scroll-ui">
-      <div className="scroller grid grid-rows-2 md:grid-cols-2" ref={ref}>
+      <div className="scroller grid grid-rows-2 grid-cols-2" ref={ref}>
         <div className="column column--left">
           {itemsLeft &&
             itemsLeft.map((item: Figure | any, i: number) => (
@@ -114,8 +119,9 @@ const ModuleHeroSplitScrollUI = ({ input }: Props) => {
           width="841.89"
           height="595.28"
           viewBox="0 0 841.89 595.28"
+          className="transition-transform duration-400"
           style={{
-            transform: `translate(-50%, -50%) rotate(${rotate}deg) scale(0.4)`,
+            transform: `translate(-50%, -50%) rotate(${rotate}deg) scale(${scale})`,
           }}
         >
           <path

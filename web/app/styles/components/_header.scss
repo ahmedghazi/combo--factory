@@ -79,11 +79,11 @@ header {
     }
     .burger-wrapper {
       z-index: 10;
-      width: toRem(30);
+      width: 30px;
       height: toRem(25);
       margin: auto;
       .burger {
-        @include burger(30px, 1px, 6px, white);
+        @include burger(30px, 1px, 6px, var(--color-primary));
         transform: translateY(10px);
       }
       &.is-active {
@@ -98,7 +98,8 @@ header {
 
     nav {
       position: fixed;
-      background-color: black;
+      background-color: var(--color-secondary);
+      // color: ;
       inset: 0;
       z-index: 0;
       padding: toRem(16);

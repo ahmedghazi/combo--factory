@@ -10,7 +10,7 @@ export function infinitScroll(
   var imagesBoundingRect: any = null,
     deltaTotal = 0,
     wrapY: any,
-    lerpCache = 0,
+    lerpDelta = 0,
     rootMarginSize: number = 0;
 
   if (!wrapper) return;
@@ -31,15 +31,15 @@ export function infinitScroll(
       }
     }
 
-    var obj = { lerpCache: 0 };
+    var obj = { lerpDelta: 0 };
     const nextVal = window.innerHeight * 1 - rootMarginSize;
     gsap.to(obj, 1, {
-      lerpCache: nextVal,
+      lerpDelta: nextVal,
       duration: 4,
       delay: 1,
       ease: Power4.easeInOut,
       onUpdate: (o) => {
-        lerpCache = obj.lerpCache;
+        lerpDelta = obj.lerpDelta;
       },
     });
   }
@@ -87,25 +87,25 @@ export function infinitScroll(
 
   function _onWheel(e: WheelEvent | any) {
     deltaTotal = deltaTotal - e.deltaY;
-    lerpCache = lerp(lerpCache, deltaTotal, 0.1);
+    lerpDelta = lerp(lerpDelta, deltaTotal, 0.1);
   }
 
   function _update() {
     items.forEach(function (el, index) {
-      const lerpCacheByDirection =
-        direction === "up" ? lerpCache * -1 : lerpCache;
-      // console.log(lerpCache);
+      const lerpDeltaByDirection =
+        direction === "up" ? lerpDelta * -1 : lerpDelta;
+      // console.log(lerpDelta);
       if (window.innerWidth < 1080) {
         // MOBILE
         const nextY: number = wrapY(
-          lerpCacheByDirection + index * imagesBoundingRect[index].width
+          lerpDeltaByDirection + index * imagesBoundingRect[index].width
         );
         el.style.transform = "translate3d(" + nextY + "px,0, 0)";
         if (typeof onScroll === "function") onScroll(nextY);
       } else {
         // DESKTOP
         let nextY: number = wrapY(
-          lerpCacheByDirection + index * imagesBoundingRect[index].height
+          lerpDeltaByDirection + index * imagesBoundingRect[index].height
         );
         if (rootMargin) nextY += rootMarginSize;
         el.style.transform = "translate3d(0," + nextY + "px, 0)";

@@ -16,7 +16,7 @@ const ModuleListLieuUI = ({ input }: Props) => {
         <div className="lieu" key={i}>
           <SummaryDetailFramer
             summary={
-              <h2 className="text-xl">
+              <h2 className="headline">
                 <AOS>{_localizeField(item.title)}</AOS>
               </h2>
             }
