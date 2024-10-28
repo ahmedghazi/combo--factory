@@ -5,9 +5,6 @@ import Footer from "./components/Footer";
 import website from "./config/website";
 import { getSettings } from "./utils/sanity-queries";
 import { PageContextProvider } from "./context/PageContext";
-import PageTransition from "./components/ui/PageTransition";
-// import Splash from "./components/Splash";
-import { usePathname } from "next/navigation";
 import { LocaleContextProvider } from "./context/LocaleContext";
 import Cursor from "./components/ui/Cursor";
 
@@ -27,17 +24,17 @@ export default async function RootLayout({
   const settings = await getSettings();
 
   return (
-    <html lang='fr'>
+    <html lang="fr">
       <body className={""}>
         {/* <PageTransition> */}
         <LocaleContextProvider>
           <PageContextProvider>
-            <div id='page'>
+            <div id="page">
               {/* <pre>{JSON.stringify(settings, null, 2)}</pre> */}
               <Header settings={settings} />
               <main>{children}</main>
               <Footer settings={settings} />
-              <Cursor color='#fff' size={10} />
+              <Cursor color="#fff" size={10} />
             </div>
           </PageContextProvider>
         </LocaleContextProvider>
