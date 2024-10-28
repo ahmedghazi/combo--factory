@@ -43,7 +43,7 @@ const ModuleListCardImageTextUI = ({ input }: Props) => {
         {!sliderShow && (
           <div
             className={clsx(
-              "grid gap-xl md:gap-md",
+              "grid gap-xl md:gap-y-xl md:gap-md",
               `md:grid-cols-${gridSize || 3}`
             )}
           >
