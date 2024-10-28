@@ -970,6 +970,13 @@ export type ListCardImageTextUI = {
   gridSize?: number;
 
   /**
+   * sliderShow — `boolean`
+   *
+   *
+   */
+  sliderShow?: boolean;
+
+  /**
    * items — `array`
    *
    *

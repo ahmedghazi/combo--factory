@@ -4,35 +4,62 @@ import React from "react";
 import Card from "../ui/Card";
 import AOS from "../ui/AOS";
 import clsx from "clsx";
+import Slider from "../ui/slick-slider";
 
 type Props = {
   input: ListCardImageTextUI;
 };
 
 const ModuleListCardImageTextUI = ({ input }: Props) => {
+  const { title, items, gridSize, sliderShow } = input;
+  // console.log(input);
   return (
     <section className="module module--list-card-image-text-ui">
       <div className="inner">
-        <h2 className="headline">{_localizeField(input.title)}</h2>
-        <div
-          className={clsx(
-            "grid gap-xl md:gap-md",
-            `md:grid-cols-${input.gridSize || 3}`
+        <h2 className="headline">{_localizeField(title)}</h2>
+        <div className="slider-container -px-sm">
+          {sliderShow && items && items?.length >= 3 && (
+            <Slider
+              settingsOverride={{
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                dots: false,
+              }}
+            >
+              {items?.map((item, i) => (
+                <div className="slide px-sm" key={i}>
+                  <Card
+                    key={i}
+                    image={item.image}
+                    title={_localizeField(item.title)}
+                    text={_localizeField(item.text)}
+                  />
+                </div>
+              ))}
+            </Slider>
           )}
-        >
-          {input.items?.map((item, i) => (
-            <div key={i}>
-              <AOS delay={i / 5}>
-                <Card
-                  key={i}
-                  image={item.image}
-                  title={_localizeField(item.title)}
-                  text={_localizeField(item.text)}
-                />
-              </AOS>
-            </div>
-          ))}
         </div>
+        {!sliderShow && (
+          <div
+            className={clsx(
+              "grid gap-xl md:gap-md",
+              `md:grid-cols-${gridSize || 3}`
+            )}
+          >
+            {items?.map((item, i) => (
+              <div key={i}>
+                <AOS delay={i / 5}>
+                  <Card
+                    key={i}
+                    image={item.image}
+                    title={_localizeField(item.title)}
+                    text={_localizeField(item.text)}
+                  />
+                </AOS>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       {/* <pre>{JSON.stringify(input.items, null, 2)}</pre> */}
     </section>
