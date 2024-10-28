@@ -21,6 +21,7 @@ const ModuleListCardImageTextUI = ({ input }: Props) => {
           {sliderShow && items && items?.length >= 3 && (
             <Slider
               settingsOverride={{
+                autoplay: true,
                 slidesToShow: gridSize || 3,
                 slidesToScroll: gridSize || 3,
                 dots: false,

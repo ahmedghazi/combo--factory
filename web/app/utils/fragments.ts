@@ -195,7 +195,10 @@ export const listCardImageTextUI = `
 			image{
 				...,
 				asset->
-			}
+			},
+			text{
+				${blockContent}
+			},
 		}
 	}
 	`;
