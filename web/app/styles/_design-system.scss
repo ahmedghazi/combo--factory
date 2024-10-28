@@ -1,8 +1,8 @@
 .cartouche {
   padding: 0.4em toRem(60);
   font-family: var(--font-primary-mono);
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   font-size: var(--text-lg);
   text-transform: uppercase;
   &--sm {
@@ -48,6 +48,18 @@
     display: grid;
     gap: var(--space-lg);
     pointer-events: none;
+    .content {
+      display: grid;
+      gap: var(--space-lg);
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .cartouche {
+          display: block;
+        }
+      }
+    }
   }
   h3 {
     font-size: var(--text-2lg);

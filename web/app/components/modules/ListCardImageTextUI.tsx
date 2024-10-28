@@ -32,6 +32,7 @@ const ModuleListCardImageTextUI = ({ input }: Props) => {
                     key={i}
                     image={item.image}
                     title={_localizeField(item.title)}
+                    tag={_localizeField(item.tag)}
                     text={_localizeField(item.text)}
                   />
                 </div>

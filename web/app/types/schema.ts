@@ -814,6 +814,13 @@ export type CardImageText = {
   title?: LocaleString;
 
   /**
+   * Tag — `localeString`
+   *
+   *
+   */
+  tag?: LocaleString;
+
+  /**
    * text — `localeBlockContent`
    *
    *

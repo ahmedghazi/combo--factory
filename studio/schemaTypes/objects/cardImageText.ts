@@ -14,6 +14,11 @@ export default defineField({
       title: 'title',
     }),
     defineField({
+      name: 'tag',
+      type: 'localeString',
+      title: 'Tag',
+    }),
+    defineField({
       name: 'text',
       type: 'localeBlockContent',
       title: 'text',
