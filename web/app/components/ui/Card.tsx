@@ -1,10 +1,4 @@
-import {
-  BlockContent,
-  Figure,
-  LocaleBlockContent,
-  LocaleString,
-  LocaleText,
-} from "@/app/types/schema";
+import { BlockContent, Figure } from "@/app/types/schema";
 import React from "react";
 import FigureUI from "./Figure";
 import { _localizeField } from "@/app/utils/utils";

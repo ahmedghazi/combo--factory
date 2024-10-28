@@ -21,8 +21,8 @@ const ModuleListCardImageTextUI = ({ input }: Props) => {
           {sliderShow && items && items?.length >= 3 && (
             <Slider
               settingsOverride={{
-                slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToShow: gridSize || 3,
+                slidesToScroll: gridSize || 3,
                 dots: false,
               }}
             >
@@ -54,6 +54,7 @@ const ModuleListCardImageTextUI = ({ input }: Props) => {
                     key={i}
                     image={item.image}
                     title={_localizeField(item.title)}
+                    tag={_localizeField(item.tag)}
                     text={_localizeField(item.text)}
                   />
                 </AOS>
