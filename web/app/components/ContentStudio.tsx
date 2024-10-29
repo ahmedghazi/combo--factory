@@ -118,6 +118,7 @@ const ContentStudio = ({ input }: Props) => {
                               />
                             </div>
                           }
+                          scrollIntoView={false}
                         />
                       </AOS>
                     </div>

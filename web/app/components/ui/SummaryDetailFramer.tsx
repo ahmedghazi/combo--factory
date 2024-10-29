@@ -8,8 +8,13 @@ import { useAnimate } from "framer-motion";
 type Props = {
   summary: ReactNode;
   detail: ReactNode;
+  scrollIntoView?: boolean;
 };
-const SummaryDetailFramer = ({ summary, detail }: Props) => {
+const SummaryDetailFramer = ({
+  summary,
+  detail,
+  scrollIntoView = true,
+}: Props) => {
   const [expand, setExpand] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -34,7 +39,7 @@ const SummaryDetailFramer = ({ summary, detail }: Props) => {
           },
         }
       );
-      if (ref && ref.current) {
+      if (scrollIntoView && ref && ref.current) {
         ref.current.scrollIntoView({
           behavior: "smooth",
         });
