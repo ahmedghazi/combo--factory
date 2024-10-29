@@ -10,7 +10,7 @@ header {
     height: calc(var(--text-sm) * 2);
   }
   .inner {
-    padding: 12px var(--space-xl);
+    padding: 12px var(--space-50);
   }
   &.is-up {
     transform: translateY(-100%);
