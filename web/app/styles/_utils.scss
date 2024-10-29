@@ -137,7 +137,6 @@ ul.list-with-comma {
     }
     .md\:col-span-#{$i} {
       grid-column: span $i / span $i;
-      // grid-column-end: $i;
     }
     .md\:col-start-#{$i} {
       grid-column-start: $i !important;
