@@ -135,11 +135,11 @@ ul.list-with-comma {
     .md\:grid-cols-#{$i} {
       grid-template-columns: repeat($i, minmax(0, 1fr));
     }
-    .md\:col-span-#{$i} {
-      grid-column: span $i / span $i;
-    }
-    .md\:col-start-#{$i} {
-      grid-column-start: $i !important;
-    }
+    // .md\:col-span-#{$i} {
+    //   grid-column: span $i / span $i;
+    // }
+    // .md\:col-start-#{$i} {
+    //   grid-column-start: $i !important;
+    // }
   }
 }
