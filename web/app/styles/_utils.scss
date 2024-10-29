@@ -129,3 +129,18 @@ ul.list-with-comma {
 .flex-2 {
   flex: 2;
 }
+
+@media (min-width: 1080px) {
+  @for $i from 1 through 10 {
+    .md\:grid-cols-#{$i} {
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+    .md\:col-span-#{$i} {
+      grid-column: span $i / span $i;
+      // grid-column-end: $i;
+    }
+    .md\:col-start-#{$i} {
+      grid-column-start: $i !important;
+    }
+  }
+}
