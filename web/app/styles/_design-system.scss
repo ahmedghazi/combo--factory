@@ -54,9 +54,10 @@
       .header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         .cartouche {
           display: block;
+          transform: translateY(0.2em);
         }
       }
     }
