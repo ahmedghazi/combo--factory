@@ -99,10 +99,10 @@
     &.module--list-lieu-ui {
       .lieu:nth-child(odd) > .summary-detail {
         & > .summary {
-          background-color: white;
-          color: black;
+          background-color: black;
+          color: white;
           svg path {
-            fill: black;
+            fill: white;
           }
         }
       }
