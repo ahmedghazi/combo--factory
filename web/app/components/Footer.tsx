@@ -4,9 +4,10 @@ import { Settings } from "../types/schema";
 import Image from "next/image";
 import { urlFor } from "../utils/sanity-utils";
 import { PortableText } from "next-sanity";
-import { _localizeField } from "../utils/utils";
+import { _linkResolver, _localizeField } from "../utils/utils";
 import portableTextComponents from "../utils/portableTextComponents";
 import AOS from "./ui/AOS";
+import Link from "next/link";
 
 type Props = {
   settings: Settings;
@@ -60,6 +61,11 @@ const Footer = ({ settings }: Props) => {
                 <li key={i}>
                   {item.link && item.label && item._type === "linkExternal" && (
                     <a href={item.link}>{item.label}</a>
+                  )}
+                  {item.link && item.label && item._type === "linkInternal" && (
+                    <Link href={_linkResolver(item.link)}>
+                      {_localizeField(item.label)}
+                    </Link>
                   )}
                 </li>
               ))}
