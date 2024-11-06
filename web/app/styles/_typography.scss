@@ -124,6 +124,9 @@ p,
   }
   &.headline a {
     font-family: var(--font-secondary);
+    &.btn--pill {
+      font-family: var(--font-primary-mono);
+    }
   }
 }
 .ellipsis {
