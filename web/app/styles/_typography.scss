@@ -121,6 +121,12 @@ p,
   }
   a {
     font-family: var(--font-primary-mono);
+    &:not(.btn--pill)::after {
+      content: "↗";
+      display: inline-block;
+      // vertical-align: baseline;
+      margin-left: 0.4em;
+    }
   }
   &.headline a {
     font-family: var(--font-secondary);

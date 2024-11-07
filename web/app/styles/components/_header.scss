@@ -44,7 +44,7 @@ header {
     .sub-menu {
       position: absolute;
       padding: var(--space-md);
-      background-color: black;
+      background-color: var(--color-bg);
       left: calc(var(--space-md) * -1);
       display: flex;
       flex-direction: column;
@@ -52,6 +52,10 @@ header {
       display: none;
       a {
         white-space: nowrap;
+        // color: white;
+        // &:hover {
+        //   color: var(--color-accent);
+        // }
       }
     }
   }

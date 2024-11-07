@@ -13,3 +13,9 @@
     object-fit: cover;
   }
 }
+
+.card {
+  figure {
+    max-width: 100%;
+  }
+}

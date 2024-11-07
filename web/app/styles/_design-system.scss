@@ -12,7 +12,7 @@
 }
 .btn--pill {
   border: var(--border);
-  padding: 0 toRem(60) 0.1em;
+  padding: 0 toRem(30) 0.1em;
   border-radius: 2em;
   text-align: center;
   display: inline-block;
@@ -22,6 +22,7 @@
   transition: background-color 0.2s, color 0.2s;
   font-size: var(--text-lg);
   font-family: var(--font-primary-mono);
+  white-space: nowrap;
   &:hover {
     background-color: white;
     color: black;
@@ -30,6 +31,12 @@
   @media all and (max-width: $md) {
     font-size: var(--text-m-md);
     padding: 0 2em;
+  }
+  @media all and (min-width: $md) and (max-width: 1200px) {
+    font-size: var(--text-sm);
+    padding: 0 2em;
+    height: 3em;
+    line-height: calc(3em * 0.9);
   }
 }
 

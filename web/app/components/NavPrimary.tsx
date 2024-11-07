@@ -51,6 +51,7 @@ const NavPrimary = ({ input }: Props) => {
   // console.log(input);
   return (
     <nav>
+      {/* <pre>{JSON.stringify(input, null, 2)}</pre> */}
       <ul className="menu flex justify-center">
         {input.map((item, i) => (
           <li key={i}>
@@ -87,9 +88,20 @@ const NavPrimary = ({ input }: Props) => {
               <ul className="sub-menu">
                 {item.subMenu?.map((subItem, j) => (
                   <li key={j}>
-                    <Link href={_linkResolver(subItem.link)}>
-                      {_localizeField(subItem.label)}
-                    </Link>
+                    {subItem._type === "linkInternal" && (
+                      <Link href={_linkResolver(subItem.link)}>
+                        {_localizeField(subItem.label)}
+                      </Link>
+                    )}
+                    {subItem._type === "linkExternal" && (
+                      <a
+                        href={subItem.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {subItem.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

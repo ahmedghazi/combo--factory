@@ -34,19 +34,22 @@ export default defineType({
       // you want and decide how you want to deal with it where you want to
       // use your content.
       styles: [
+        {title: 'H2', value: 'h2'},
+        {title: 'H3', value: 'h3'},
         {
           title: 'Normal',
           value: 'normal',
         },
+
         {
-          title: 'Titre H2',
-          value: 'h2 text-lg',
-          component: TextL,
+          title: 'Text LG (17px)',
+          value: 'h3 text-lg',
+          component: Text2L,
         },
         {
-          title: 'Titre H3',
-          value: 'h3 text-2lg',
-          component: Text2L,
+          title: 'Text 2LG (26px)',
+          value: 'h2 text-2lg',
+          component: TextL,
         },
         // {title: 'H4', value: 'h4'},
         // {title: 'Quote', value: 'blockquote'},
