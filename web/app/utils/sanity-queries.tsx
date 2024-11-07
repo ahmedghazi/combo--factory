@@ -36,10 +36,18 @@ export async function getSettings(): Promise<Settings> {
           },
           subMenu[]{
             ...,
-            link->{
-              _type,
-              slug
-            }
+            // link->{
+            //   _type,
+            //   slug
+            // }
+            _type == 'linkInternal' => {
+              ...,
+              link->{
+                _type,
+                slug,
+                subMenu
+              },
+            },
           }
         }
       },
