@@ -869,6 +869,13 @@ export type TextUI = {
   title?: LocaleString;
 
   /**
+   * titleCentered — `boolean`
+   *
+   * Titre centré?
+   */
+  titleCentered?: boolean;
+
+  /**
    * Text — `localeBlockContent`
    *
    *

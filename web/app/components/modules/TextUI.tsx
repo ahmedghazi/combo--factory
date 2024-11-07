@@ -15,6 +15,7 @@ const ModuleTextUI = ({ input }: Props) => {
   const {
     look,
     title,
+    titleCentered,
     text,
     backgroundColor,
     backgroundImage,
@@ -38,22 +39,37 @@ const ModuleTextUI = ({ input }: Props) => {
         <div className="row center-xs">
           <div className="col-md-10 col-xs-12">
             {look === "default" && (
-              <div className="text mx-auto">
-                {text && (
+              <>
+                {title && (
                   <AOS>
-                    <PortableText
-                      value={_localizeField(text)}
-                      components={portableTextComponents}
-                    />
+                    <div className={titleCentered ? "text-center" : ""}>
+                      <h2 className={clsx("headline")}>
+                        {_localizeField(title)}
+                      </h2>
+                    </div>
                   </AOS>
                 )}
-              </div>
+                <div className="text mx-auto">
+                  {text && (
+                    <AOS>
+                      <PortableText
+                        value={_localizeField(text)}
+                        components={portableTextComponents}
+                      />
+                    </AOS>
+                  )}
+                </div>
+              </>
             )}
             {look === "offset" && (
               <div className="mx-auto">
                 {title && (
                   <AOS>
-                    <h2 className="headline">{_localizeField(title)}</h2>
+                    <div className={titleCentered ? "text-center" : ""}>
+                      <h2 className={clsx("headline")}>
+                        {_localizeField(title)}
+                      </h2>
+                    </div>
                   </AOS>
                 )}
 
@@ -77,7 +93,11 @@ const ModuleTextUI = ({ input }: Props) => {
               <>
                 {title && (
                   <AOS>
-                    <h2 className="headline">{_localizeField(title)}</h2>
+                    <div className={titleCentered ? "text-center" : ""}>
+                      <h2 className={clsx("headline")}>
+                        {_localizeField(title)}
+                      </h2>
+                    </div>
                   </AOS>
                 )}
                 {text && (

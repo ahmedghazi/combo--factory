@@ -26,6 +26,11 @@ export default defineField({
       description: 'Module title (displayed only in the admin)',
     }),
     defineField({
+      name: 'titleCentered',
+      type: 'boolean',
+      description: 'Titre centré?',
+    }),
+    defineField({
       name: 'text',
       type: 'localeBlockContent',
       title: 'Text',
