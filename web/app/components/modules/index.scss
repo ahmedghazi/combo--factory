@@ -68,6 +68,11 @@
         }
       }
     }
+    &.module--text-image-ui {
+      .inner {
+        padding: var(--space-50);
+      }
+    }
     &.module--contacts-ui {
       .inner {
         padding: var(--space-50);
@@ -109,6 +114,18 @@
           svg path {
             fill: white;
           }
+        }
+      }
+    }
+    &.module--list-page-ui {
+      & > .inner {
+        padding: var(--space-50);
+      }
+      .headline {
+        text-align: center;
+        div {
+          max-width: 10em;
+          display: inline-block;
         }
       }
     }

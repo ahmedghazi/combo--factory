@@ -78,6 +78,18 @@ export const textUI = `
 	}
 `;
 
+export const textImageUI = `
+	_type == 'textImageUI' => {
+		...,
+		text{
+			${blockContent}
+		},
+		image{
+			${figure}
+		}
+	}
+`;
+
 export const heroUI = `
 	_type == 'heroUI' => {
 		...,
@@ -121,6 +133,18 @@ export const listLModulaireUI = `
 		items[] {
 			...,
 			backgroundImage{
+				...,
+				asset->
+			}
+		}
+	}
+`;
+export const listLPageUI = `
+	_type == 'listPageUI' => {
+		...,
+		items[]-> {
+			...,
+			imageCover{
 				...,
 				asset->
 			}
@@ -203,6 +227,22 @@ export const listCardImageTextUI = `
 	}
 	`;
 
+export const sliderCardImageTextUI = `
+	_type == 'sliderCardImageTextUI' => {
+		...,
+		items[] {
+			...,
+			image{
+				...,
+				asset->
+			},
+			text{
+				${blockContent}
+			},
+		}
+	}
+	`;
+
 export const listLieuUI = `
 _type == 'listLieuUI' => {
 	...,
@@ -212,14 +252,17 @@ _type == 'listLieuUI' => {
 			...,
 			${heroUI},
 			${textUI},
+			${textImageUI},
 			${contactsUI},
 			${listStudioUI},
+			${listLPageUI},
 			${callOutUI},
 			${listLModulaireUI},
 			${splitImageTextUI},
 			${heroSplitScrollUI},
 			${listCardImageTextUI},
-			${heroSplitUI}
+			${heroSplitUI},
+			${sliderCardImageTextUI}
 		},
 	}
 }
@@ -229,13 +272,16 @@ export const modules = `
 	...,
 	${heroUI},
 	${textUI},
+	${textImageUI},
 	${contactsUI},
 	${listStudioUI},
+	${listLPageUI},
 	${listLieuUI},
 	${callOutUI},
 	${listLModulaireUI},
 	${splitImageTextUI},
 	${heroSplitScrollUI},
 	${listCardImageTextUI},
-	${heroSplitUI}
+	${heroSplitUI},
+	${sliderCardImageTextUI}
 `;

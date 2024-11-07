@@ -18,4 +18,11 @@
   figure {
     max-width: 100%;
   }
+  &--page {
+    img {
+      aspect-ratio: 1 / 1;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
 }

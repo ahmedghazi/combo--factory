@@ -1,11 +1,13 @@
 export default [
   {type: 'textUI'},
+  {type: 'textImageUI'},
   {type: 'heroUI'},
   {type: 'contactsUI'},
   {type: 'listCardImageTextUI'},
   {type: 'listLieuUI'},
   {type: 'listStudioUI'},
   {type: 'listLModulaireUI'},
+  {type: 'listPageUI'},
   {type: 'imageUI'},
   {type: 'marqueeUI'},
   {type: 'splitImageTextUI'},
@@ -13,4 +15,5 @@ export default [
   {type: 'callOutUI'},
   {type: 'heroSplitScrollUI'},
   {type: 'heroSplitUI'},
+  {type: 'sliderCardImageTextUI'},
 ]

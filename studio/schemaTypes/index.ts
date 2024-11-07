@@ -5,6 +5,7 @@ import lieu from './documents/lieu'
 import studio from './documents/studio'
 import infos from './singletons/infos'
 import settings from './singletons/settings'
+import tag from './documents/tag'
 
 import localeString from './locale/localeString'
 import localeText from './locale/localeText'
@@ -42,6 +43,9 @@ import listStudioUI from './objects/modules/listStudioUI'
 import listLModulaireUI from './objects/modules/listLModulaireUI'
 import heroSplitScrollUI from './objects/modules/heroSplitScrollUI'
 import heroSplitUI from './objects/modules/heroSplitUI'
+import textImageUI from './objects/modules/textImageUI'
+import listPageUI from './objects/modules/listPageUI'
+import sliderCardImageTextUI from './objects/modules/sliderCardImageTextUI'
 
 export const schemaTypes = [
   home,
@@ -51,6 +55,7 @@ export const schemaTypes = [
   pageModulaire,
   lieu,
   studio,
+  tag,
 
   localeString,
   localeText,
@@ -82,11 +87,14 @@ export const schemaTypes = [
   listLieuUI,
   listStudioUI,
   listLModulaireUI,
+  listPageUI,
   marqueeUI,
   splitImageTextUI,
   sliderUI,
   calloutUI,
   heroSplitScrollUI,
   heroSplitUI,
+  textImageUI,
+  sliderCardImageTextUI,
 ]
 export default schemaTypes

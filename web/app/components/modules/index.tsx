@@ -17,11 +17,14 @@ import {
   ListLieuUI,
   ListLModulaireUI,
   ListStudioUI,
+  ListPageUI,
   MarqueeUI,
   SanityKeyed,
   SliderUI,
   SplitImageTextUI,
+  TextImageUI,
   TextUI,
+  SliderCardImageTextUI,
 } from "../../types/schema";
 
 import "./index.scss";
@@ -39,16 +42,20 @@ import ModuleCallOutUI from "./CallOutUI";
 import ModuleSplitImageTextUI from "./SplitImageTextUI";
 import ModuleHeroSplitScrollUI from "./HeroSplitScrollUI";
 import ModuleHeroSplitUI from "./HeroSplitUI";
+import ModuleTextImageUI from "./TextImageUI";
+import ModuleListPageUI from "./ListPageUI";
 
 type Props = {
   input: Array<
     | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
     | SanityKeyed<HeroUI>
     | SanityKeyed<ContactsUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLieuUI>
     | SanityKeyed<ListStudioUI>
     | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
     | SanityKeyed<ImageUI>
     | SanityKeyed<MarqueeUI>
     | SanityKeyed<SplitImageTextUI>
@@ -56,6 +63,7 @@ type Props = {
     | SanityKeyed<CallOutUI>
     | SanityKeyed<HeroSplitScrollUI>
     | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
 };
 
@@ -66,25 +74,30 @@ const Modules = ({ input }: Props) => {
       (
         module:
           | SanityKeyed<TextUI>
+          | SanityKeyed<TextImageUI>
           | SanityKeyed<HeroUI>
           | SanityKeyed<ContactsUI>
           | SanityKeyed<ListCardImageTextUI>
           | SanityKeyed<ListLieuUI>
           | SanityKeyed<ListStudioUI>
           | SanityKeyed<ListLModulaireUI>
+          | SanityKeyed<ListPageUI>
           | SanityKeyed<ImageUI>
           | SanityKeyed<MarqueeUI>
           | SanityKeyed<SplitImageTextUI>
           | SanityKeyed<SliderUI>
           | SanityKeyed<CallOutUI>
           | SanityKeyed<HeroSplitScrollUI>
-          | SanityKeyed<HeroSplitUI>,
+          | SanityKeyed<HeroSplitUI>
+          | SanityKeyed<SliderCardImageTextUI>,
         i: number
       ) => {
         // console.log(module._type);
         switch (module._type) {
           case "textUI":
             return <ModuleTextUI key={module._key} input={module} />;
+          case "textImageUI":
+            return <ModuleTextImageUI key={module._key} input={module} />;
           case "heroUI":
             return <ModuleHeroUI key={module._key} input={module} />;
           case "contactsUI":
@@ -99,6 +112,8 @@ const Modules = ({ input }: Props) => {
             return <ModuleListStudioUI key={module._key} input={module} />;
           case "listLModulaireUI":
             return <ModuleListLModulaireUI key={module._key} input={module} />;
+          case "listPageUI":
+            return <ModuleListPageUI key={module._key} input={module} />;
           case "imageUI":
             return <ModuleImageUI key={module._key} input={module} />;
           case "marqueeUI":

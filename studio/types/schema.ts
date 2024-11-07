@@ -72,18 +72,21 @@ export interface Home extends SanityDocument {
    */
   modules?: Array<
     | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
     | SanityKeyed<HeroUI>
     | SanityKeyed<ContactsUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLieuUI>
     | SanityKeyed<ListStudioUI>
     | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
     | SanityKeyed<ImageUI>
     | SanityKeyed<MarqueeUI>
     | SanityKeyed<SplitImageTextUI>
     | SanityKeyed<CallOutUI>
     | SanityKeyed<HeroSplitScrollUI>
     | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
 }
 
@@ -123,18 +126,21 @@ export interface Landing extends SanityDocument {
    */
   modules?: Array<
     | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
     | SanityKeyed<HeroUI>
     | SanityKeyed<ContactsUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLieuUI>
     | SanityKeyed<ListStudioUI>
     | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
     | SanityKeyed<ImageUI>
     | SanityKeyed<MarqueeUI>
     | SanityKeyed<SplitImageTextUI>
     | SanityKeyed<CallOutUI>
     | SanityKeyed<HeroSplitScrollUI>
     | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
 }
 
@@ -300,7 +306,7 @@ export interface PageModulaire extends SanityDocument {
   /**
    * Soustitre — `localeString`
    *
-   *
+   * Visible dans les listes page, dans la card (cartouche fond noir)
    */
   subTitle?: LocaleString;
 
@@ -319,24 +325,48 @@ export interface PageModulaire extends SanityDocument {
   subMenu?: Array<SanityKeyed<KeyVal>>;
 
   /**
+   * Tags — `array`
+   *
+   *
+   */
+  tags?: Array<SanityKeyedReference<Tag>>;
+
+  /**
+   * Image clef — `figure`
+   *
+   * Visible dans les listes page, dans la card (1400px)
+   */
+  imageCover?: Figure;
+
+  /**
+   * Extrait — `localeString`
+   *
+   *
+   */
+  excerpt?: LocaleString;
+
+  /**
    * Modules — `array`
    *
    * Zone de contenu Modulaire (images, textes, embed)
    */
   modules?: Array<
     | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
     | SanityKeyed<HeroUI>
     | SanityKeyed<ContactsUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLieuUI>
     | SanityKeyed<ListStudioUI>
     | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
     | SanityKeyed<ImageUI>
     | SanityKeyed<MarqueeUI>
     | SanityKeyed<SplitImageTextUI>
     | SanityKeyed<CallOutUI>
     | SanityKeyed<HeroSplitScrollUI>
     | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
 }
 
@@ -395,18 +425,21 @@ export interface Lieu extends SanityDocument {
    */
   modules?: Array<
     | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
     | SanityKeyed<HeroUI>
     | SanityKeyed<ContactsUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLieuUI>
     | SanityKeyed<ListStudioUI>
     | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
     | SanityKeyed<ImageUI>
     | SanityKeyed<MarqueeUI>
     | SanityKeyed<SplitImageTextUI>
     | SanityKeyed<CallOutUI>
     | SanityKeyed<HeroSplitScrollUI>
     | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
 }
 
@@ -494,6 +527,29 @@ export interface Studio extends SanityDocument {
    *
    */
   infos?: Array<SanityKeyed<SummaryDetail>>;
+}
+
+/**
+ * Tag
+ *
+ *
+ */
+export interface Tag extends SanityDocument {
+  _type: "tag";
+
+  /**
+   * Title — `localeString`
+   *
+   *
+   */
+  title?: LocaleString;
+
+  /**
+   * Slug — `slug`
+   *
+   * URL basée sur le titre (sans espace ni caractère autre que a-z-0-9
+   */
+  slug?: { _type: "slug"; current: string };
 }
 
 export type LocaleString = {
@@ -1053,19 +1109,53 @@ export type ListLModulaireUI = {
    */
   items?: Array<
     | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
     | SanityKeyed<HeroUI>
     | SanityKeyed<ContactsUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLieuUI>
     | SanityKeyed<ListStudioUI>
     | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
     | SanityKeyed<ImageUI>
     | SanityKeyed<MarqueeUI>
     | SanityKeyed<SplitImageTextUI>
     | SanityKeyed<CallOutUI>
     | SanityKeyed<HeroSplitScrollUI>
     | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
+};
+
+export type ListPageUI = {
+  _type: "listPageUI";
+  /**
+   * Titre — `localeString`
+   *
+   *
+   */
+  title?: LocaleString;
+
+  /**
+   * navTags — `array`
+   *
+   *
+   */
+  navTags?: Array<SanityKeyedReference<Tag>>;
+
+  /**
+   * gridSize — `number`
+   *
+   * Items par ligne, par défaut 3
+   */
+  gridSize?: number;
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<SanityKeyedReference<PageModulaire>>;
 };
 
 export type MarqueeUI = {
@@ -1236,6 +1326,75 @@ export type HeroSplitUI = {
   itemsRight?: Figure;
 };
 
+export type TextImageUI = {
+  _type: "textImageUI";
+  /**
+   * title — `localeString`
+   *
+   * Module title (displayed only in the admin)
+   */
+  title?: LocaleString;
+
+  /**
+   * direction — `string`
+   *
+   * Image à gauche ou inverse
+   */
+  direction?: "" | "reverse";
+
+  /**
+   * Text — `localeBlockContent`
+   *
+   *
+   */
+  text?: LocaleBlockContent;
+
+  /**
+   * image — `figure`
+   *
+   *
+   */
+  image?: Figure;
+};
+
+export type SliderCardImageTextUI = {
+  _type: "sliderCardImageTextUI";
+  /**
+   * Titre — `localeString`
+   *
+   *
+   */
+  title?: LocaleString;
+
+  /**
+   * Slug — `slug`
+   *
+   * Click sur generate, ancre servant au sous menu, pour que la page scroll vers cette section
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * gridSize — `number`
+   *
+   * Items par ligne, par défaut 3
+   */
+  gridSize?: number;
+
+  /**
+   * autoplay — `boolean`
+   *
+   *
+   */
+  autoplay?: boolean;
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<SanityKeyed<CardImageText>>;
+};
+
 export type Documents =
   | Home
   | Landing
@@ -1243,4 +1402,5 @@ export type Documents =
   | Settings
   | PageModulaire
   | Lieu
-  | Studio;
+  | Studio
+  | Tag;

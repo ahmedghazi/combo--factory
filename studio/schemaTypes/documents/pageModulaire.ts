@@ -45,6 +45,7 @@ export default defineType({
       type: 'localeString',
       title: 'Soustitre',
       group: 'editorial',
+      description: 'Visible dans les listes page, dans la card (cartouche fond noir)',
     }),
     defineField({
       name: 'slug',
@@ -69,6 +70,31 @@ export default defineType({
           type: 'keyVal',
         },
       ],
+      group: 'editorial',
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'tag'}],
+        },
+      ],
+      group: 'editorial',
+    }),
+    defineField({
+      name: 'imageCover',
+      type: 'figure',
+      title: 'Image clef',
+      description: 'Visible dans les listes page, dans la card (1400px)',
+      group: 'editorial',
+    }),
+    defineField({
+      name: 'excerpt',
+      type: 'localeString',
+      title: 'Extrait',
       group: 'editorial',
     }),
     defineField({

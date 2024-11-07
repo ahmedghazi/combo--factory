@@ -14,34 +14,33 @@ export default defineType({
       type: 'localeString',
     }),
     defineField({
-      name: 'tagType',
-      title: 'Type',
-      type: 'string',
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      description: 'URL basée sur le titre (sans espace ni caractère autre que a-z-0-9',
       options: {
-        list: [
-          {title: 'Thème', value: 'theme'},
-          {title: 'Géographie', value: 'geography'},
-          {title: 'Métier', value: 'job'},
-        ], // <-- predefined values
+        source: `title.${baseLanguage}`,
+        maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {
     select: {
       title: `title.${baseLanguage}`,
-      subtitle: 'tagType',
+      // subtitle: 'tagType',
     },
   },
-  orderings: [
-    {
-      title: 'Trier par theme ASC',
-      name: 'themeAsc',
-      by: [{field: 'tagType', direction: 'asc'}],
-    },
-    {
-      title: 'Trier par theme DESC',
-      name: 'themeDesc',
-      by: [{field: 'tagType', direction: 'desc'}],
-    },
-  ],
+  // orderings: [
+  //   {
+  //     title: 'Trier par theme ASC',
+  //     name: 'themeAsc',
+  //     by: [{field: 'tagType', direction: 'asc'}],
+  //   },
+  //   {
+  //     title: 'Trier par theme DESC',
+  //     name: 'themeDesc',
+  //     by: [{field: 'tagType', direction: 'desc'}],
+  //   },
+  // ],
 })
