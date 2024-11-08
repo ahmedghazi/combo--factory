@@ -10,10 +10,13 @@ import {
   ListCardImageTextUI,
   ListLieuUI,
   ListLModulaireUI,
+  ListPageUI,
   ListStudioUI,
   MarqueeUI,
+  SliderCardImageTextUI,
   SliderUI,
   SplitImageTextUI,
+  TextImageUI,
   TextUI,
 } from "../types/schema";
 import Modules from "./modules";
@@ -22,12 +25,14 @@ import { SanityKeyed } from "sanity-codegen";
 type Props = {
   modules: Array<
     | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
     | SanityKeyed<HeroUI>
     | SanityKeyed<ContactsUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLieuUI>
     | SanityKeyed<ListStudioUI>
     | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
     | SanityKeyed<ImageUI>
     | SanityKeyed<MarqueeUI>
     | SanityKeyed<SplitImageTextUI>
@@ -35,6 +40,7 @@ type Props = {
     | SanityKeyed<CallOutUI>
     | SanityKeyed<HeroSplitScrollUI>
     | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
 };
 

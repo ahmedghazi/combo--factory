@@ -96,24 +96,24 @@ const Modules = ({ input }: Props) => {
         switch (module._type) {
           case "textUI":
             return <ModuleTextUI key={module._key} input={module} />;
-          case "textImageUI":
-            return <ModuleTextImageUI key={module._key} input={module} />;
+          // case "textImageUI":
+          //   return <ModuleTextImageUI key={module._key} input={module} />;
           case "heroUI":
             return <ModuleHeroUI key={module._key} input={module} />;
           case "contactsUI":
             return <ModuleContactsUI key={module._key} input={module} />;
-          case "listCardImageTextUI":
-            return (
-              <ModuleListCardImageTextUI key={module._key} input={module} />
-            );
+          // case "listCardImageTextUI":
+          //   return (
+          //     <ModuleListCardImageTextUI key={module._key} input={module} />
+          //   );
           case "listLieuUI":
             return <ModuleListLieuUI key={module._key} input={module} />;
           case "listStudioUI":
             return <ModuleListStudioUI key={module._key} input={module} />;
           case "listLModulaireUI":
             return <ModuleListLModulaireUI key={module._key} input={module} />;
-          case "listPageUI":
-            return <ModuleListPageUI key={module._key} input={module} />;
+          // case "listPageUI":
+          //   return <ModuleListPageUI key={module._key} input={module} />;
           case "imageUI":
             return <ModuleImageUI key={module._key} input={module} />;
           case "marqueeUI":
