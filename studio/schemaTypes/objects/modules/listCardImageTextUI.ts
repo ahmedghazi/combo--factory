@@ -36,12 +36,7 @@ export default {
       initialValue: 3,
       description: 'Items par ligne, par défaut 3',
     }),
-    defineField({
-      name: 'sliderShow',
-      type: 'boolean',
-      initialValue: false,
-      description: '',
-    }),
+
     defineField({
       name: 'items',
       type: 'array',
