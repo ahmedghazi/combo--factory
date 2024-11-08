@@ -102,10 +102,10 @@ const Modules = ({ input }: Props) => {
             return <ModuleHeroUI key={module._key} input={module} />;
           case "contactsUI":
             return <ModuleContactsUI key={module._key} input={module} />;
-          // case "listCardImageTextUI":
-          //   return (
-          //     <ModuleListCardImageTextUI key={module._key} input={module} />
-          //   );
+          case "listCardImageTextUI":
+            return (
+              <ModuleListCardImageTextUI key={module._key} input={module} />
+            );
           case "listLieuUI":
             return <ModuleListLieuUI key={module._key} input={module} />;
           case "listStudioUI":
