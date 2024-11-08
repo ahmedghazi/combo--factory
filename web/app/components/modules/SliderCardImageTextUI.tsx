@@ -18,10 +18,10 @@ const ModuleSliderCardImageTextUI = ({ input }: Props) => {
         <div className="slider-container -px-sm">
           <Slider
             settingsOverride={{
-              autoplay: autoplay,
+              autoplay: false,
               slidesToShow: gridSize || 3,
               slidesToScroll: gridSize || 3,
-              dots: false,
+              dots: true,
             }}
           >
             {items?.map((item, i) => (

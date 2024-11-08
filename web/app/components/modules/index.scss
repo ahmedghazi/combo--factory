@@ -316,15 +316,6 @@
           padding: var(--space-lg) var(--space-m-md);
           gap: 1em;
         }
-        .slider-container {
-          @media all and (min-width: $md) {
-            margin: 0 calc(var(--space-sm) * -1);
-          }
-          a.btn--pill {
-            z-index: 50;
-            position: relative;
-          }
-        }
       }
       .card {
         .inner {
@@ -337,6 +328,46 @@
       }
       h2 {
         text-align: center;
+      }
+    }
+    &.module--slider-card-image-text-ui {
+      .inner {
+        padding: var(--space-50);
+        @media all and (max-width: $md) {
+          padding: var(--space-lg) var(--space-m-md);
+          gap: 1em;
+        }
+        .slider-container {
+          @media all and (min-width: $md) {
+            margin: 0 calc(var(--space-sm) * -1);
+          }
+          .slick-arrow {
+            width: auto;
+            height: auto;
+            bottom: var(--space-md);
+            top: unset;
+            text-indent: 0;
+            padding: 0 var(--space-sm);
+            color: var(--color-accent);
+            cursor: pointer;
+            &:hover {
+              color: var(--color-primary);
+            }
+          }
+          a.btn--pill {
+            z-index: 50;
+            position: relative;
+          }
+        }
+        h2 {
+          text-align: center;
+        }
+        .card {
+          .inner {
+            padding: 0;
+            // gap: var(--space-md);
+          }
+        }
       }
     }
   }

@@ -34,13 +34,12 @@ export default defineType({
       // you want and decide how you want to deal with it where you want to
       // use your content.
       styles: [
-        {title: 'H2', value: 'h2'},
-        {title: 'H3', value: 'h3'},
         {
           title: 'Normal',
           value: 'normal',
         },
-
+        {title: 'H2', value: 'h2'},
+        {title: 'H3', value: 'h3'},
         {
           title: 'Text LG (17px)',
           value: 'h3 text-lg',

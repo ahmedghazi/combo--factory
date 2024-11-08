@@ -44,6 +44,7 @@ import ModuleHeroSplitScrollUI from "./HeroSplitScrollUI";
 import ModuleHeroSplitUI from "./HeroSplitUI";
 import ModuleTextImageUI from "./TextImageUI";
 import ModuleListPageUI from "./ListPageUI";
+import ModuleSliderCardImageTextUI from "./SliderCardImageTextUI";
 
 type Props = {
   input: Array<
@@ -96,8 +97,8 @@ const Modules = ({ input }: Props) => {
         switch (module._type) {
           case "textUI":
             return <ModuleTextUI key={module._key} input={module} />;
-          // case "textImageUI":
-          //   return <ModuleTextImageUI key={module._key} input={module} />;
+          case "textImageUI":
+            return <ModuleTextImageUI key={module._key} input={module} />;
           case "heroUI":
             return <ModuleHeroUI key={module._key} input={module} />;
           case "contactsUI":
@@ -128,6 +129,10 @@ const Modules = ({ input }: Props) => {
             return <ModuleHeroSplitScrollUI key={module._key} input={module} />;
           case "heroSplitUI":
             return <ModuleHeroSplitUI key={module._key} input={module} />;
+          // case "sliderCardImageTextUI":
+          //   return (
+          //     <ModuleSliderCardImageTextUI key={module._key} input={module} />
+          //   );
           default:
             return null;
         }
