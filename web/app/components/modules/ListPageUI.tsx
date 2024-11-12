@@ -28,7 +28,7 @@ const ModuleListPageUI = ({ input }: Props) => {
         <h2 className="headline">{_localizeField(title)}</h2>
         {/* <pre>{JSON.stringify(navTags, null, 2)}</pre> */}
         {navTags && navTags?.length > 0 && (
-          <ul className="flex flex-wrap justify-center gap-md mb-md">
+          <ul className="flex flex-wrap justify-center gap-md mb-50">
             {navTags.map((item, i) => (
               <li key={i}>
                 <button

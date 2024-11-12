@@ -75,6 +75,9 @@
           padding: var(--space-50) var(--space-m-md);
         }
       }
+      h2.headline {
+        line-height: 0.65;
+      }
     }
     &.module--contacts-ui {
       .inner {
