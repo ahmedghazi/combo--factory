@@ -23,9 +23,11 @@
   font-size: var(--text-lg);
   font-family: var(--font-primary-mono);
   white-space: nowrap;
-  &:hover {
-    background-color: white;
-    color: black;
+  &:hover,
+  &.is-active {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg);
   }
 
   @media all and (max-width: $md) {
@@ -134,4 +136,8 @@
   position: absolute;
   inset: 0;
   mix-blend-mode: multiply;
+}
+
+.is-hidden {
+  display: none;
 }

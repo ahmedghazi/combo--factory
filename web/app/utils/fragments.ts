@@ -142,12 +142,14 @@ export const listLModulaireUI = `
 export const listLPageUI = `
 	_type == 'listPageUI' => {
 		...,
+		navTags[]->,
 		items[]-> {
 			...,
 			imageCover{
 				...,
 				asset->
-			}
+			},
+			tags[]->
 		}
 	}
 `;

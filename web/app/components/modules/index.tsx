@@ -113,8 +113,8 @@ const Modules = ({ input }: Props) => {
             return <ModuleListStudioUI key={module._key} input={module} />;
           case "listLModulaireUI":
             return <ModuleListLModulaireUI key={module._key} input={module} />;
-          // case "listPageUI":
-          //   return <ModuleListPageUI key={module._key} input={module} />;
+          case "listPageUI":
+            return <ModuleListPageUI key={module._key} input={module} />;
           case "imageUI":
             return <ModuleImageUI key={module._key} input={module} />;
           case "marqueeUI":
@@ -129,10 +129,10 @@ const Modules = ({ input }: Props) => {
             return <ModuleHeroSplitScrollUI key={module._key} input={module} />;
           case "heroSplitUI":
             return <ModuleHeroSplitUI key={module._key} input={module} />;
-          // case "sliderCardImageTextUI":
-          //   return (
-          //     <ModuleSliderCardImageTextUI key={module._key} input={module} />
-          //   );
+          case "sliderCardImageTextUI":
+            return (
+              <ModuleSliderCardImageTextUI key={module._key} input={module} />
+            );
           default:
             return null;
         }

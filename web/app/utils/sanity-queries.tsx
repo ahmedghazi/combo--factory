@@ -51,6 +51,17 @@ export async function getSettings(): Promise<Settings> {
           }
         }
       },
+      navSecondary[]{
+        ...,
+        _type == 'linkInternal' => {
+          ...,
+          link->{
+            _type,
+            slug,
+            subMenu
+          },
+        },
+      },
       comboLogo{
         ...,
 			  asset->

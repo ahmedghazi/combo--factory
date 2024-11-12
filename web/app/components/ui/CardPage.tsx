@@ -18,13 +18,12 @@ import Link from "next/link";
 
 type Props = {
   input: PageModulaire;
-  _onClick?: Function;
 };
 
-const CardPage = ({ input, _onClick }: Props) => {
+const CardPage = ({ input }: Props) => {
   const { imageCover, title, subTitle, excerpt } = input;
 
-  console.log(input);
+  // console.log(input);
 
   return (
     <article className="card card--page">

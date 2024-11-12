@@ -128,6 +128,11 @@
           display: inline-block;
         }
       }
+      .is-filtering {
+        .item:not(.is-selected) {
+          display: none;
+        }
+      }
     }
     &.module--list-studio-ui {
       article.card img {

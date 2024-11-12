@@ -65,6 +65,7 @@ export const structure = (S) =>
         .title('Pages')
         .schemaType('pageModulaire')
         .child(S.documentTypeList('pageModulaire')),
+      S.listItem().title('Tags').schemaType('tag').child(S.documentTypeList('tag')),
 
       S.divider(),
 
