@@ -2,6 +2,7 @@ import { groq } from "next-sanity";
 import { cachedClient, client } from "./sanity-client";
 import { Home, Infos, Landing, PageModulaire, Settings } from "../types/schema";
 import { contactsUI, heroUI, modules, seo, textUI } from "./fragments";
+import { revalidatePath } from "next/cache";
 
 /*****************************************************************************************************
  * SETTINGS
@@ -122,5 +123,6 @@ export const pageModulaireQuery = groq`*[_type == "pageModulaire" && slug.curren
   },
 }`;
 export async function getPageModulaire(slug: string): Promise<PageModulaire> {
+  // revalidatePath(slug);
   return cachedClient(pageModulaireQuery, { slug: slug });
 }
