@@ -27,10 +27,12 @@ const ModuleTextImageUI = ({ input }: Props) => {
             </AOS>
             <AOS>
               <div className="mb-md">
-                <PortableText
-                  value={_localizeField(text)}
-                  components={portableTextComponents}
-                />
+                <div className="text">
+                  <PortableText
+                    value={_localizeField(text)}
+                    components={portableTextComponents}
+                  />
+                </div>
               </div>
             </AOS>
           </div>

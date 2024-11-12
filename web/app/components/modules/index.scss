@@ -71,6 +71,9 @@
     &.module--text-image-ui {
       .inner {
         padding: var(--space-50);
+        @media all and (max-width: $md) {
+          padding: var(--space-50) var(--space-m-md);
+        }
       }
     }
     &.module--contacts-ui {
@@ -120,6 +123,9 @@
     &.module--list-page-ui {
       & > .inner {
         padding: var(--space-50);
+        @media all and (max-width: $md) {
+          padding: var(--space-50) var(--space-m-md);
+        }
       }
       .headline {
         text-align: center;
