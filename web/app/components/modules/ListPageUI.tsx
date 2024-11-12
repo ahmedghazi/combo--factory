@@ -53,7 +53,7 @@ const ModuleListPageUI = ({ input }: Props) => {
         >
           {items?.map((item, i) => (
             <div className={clsx("item", getIsInTag(item.tags))} key={i}>
-              <div>{getIsInTag(item.tags)}</div>
+              {/* <div>{getIsInTag(item.tags)}</div> */}
               {/* {item.tags && item.tags[0] ? item.tags[0].title.fr : ""} */}
               <CardPage input={item} />
             </div>
