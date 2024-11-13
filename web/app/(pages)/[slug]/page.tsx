@@ -10,7 +10,7 @@ import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import React from "react";
 
-export const revalidate = 10; // revalidate every hour
+// export const revalidate = 10; // revalidate every hour
 // export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
