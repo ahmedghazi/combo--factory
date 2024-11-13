@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 import { sanityFetch } from "./sanity.client";
-import { Home, Infos, Landing, PageModulaire, Settings } from "../types/schema";
-import { contactsUI, heroUI, modules, seo, textUI } from "./fragments";
+import { Home, PageModulaire, Settings } from "../types/schema";
+import { modules, seo } from "./fragments";
 // import { revalidatePath } from "next/cache";
 
 /*****************************************************************************************************
