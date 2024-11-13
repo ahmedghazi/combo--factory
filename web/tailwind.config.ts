@@ -39,6 +39,7 @@ const config: Config = {
       "gray-alt": "var(--color-gray-alt)",
       yellow: "var(--color-yellow)",
       green: "var(--color-green)",
+      accent: "var(--color-accent)",
     },
     fontSize: {
       sm: ["var(--text-sm)", "1.1"],

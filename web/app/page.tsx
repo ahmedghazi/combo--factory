@@ -1,9 +1,9 @@
 import { draftMode } from "next/headers";
 import { Metadata } from "next";
 import website from "./config/website";
-import { getHome, homeQ } from "./utils/sanity-queries";
+import { getHome, homeQuery } from "./utils/sanity-queries";
 import { Home } from "./types/schema";
-import { getClient } from "./utils/sanity-client";
+import { getClient } from "./utils/sanity.client";
 import ContentModulaire from "./components/ContentModulaire";
 
 export const revalidate = 3600; // revalidate every hour
@@ -35,7 +35,7 @@ const HomePage: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   let data: Home;
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      homeQ,
+      homeQuery,
       params
     );
   } else {

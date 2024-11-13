@@ -1,59 +1,44 @@
 import { groq } from "next-sanity";
-import { cachedClient, client } from "./sanity-client";
+import { sanityFetch } from "./sanity.client";
 import { Home, Infos, Landing, PageModulaire, Settings } from "../types/schema";
 import { contactsUI, heroUI, modules, seo, textUI } from "./fragments";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 
 /*****************************************************************************************************
  * SETTINGS
  */
-export async function getSettings(): Promise<Settings> {
-  return client.fetch(
-    groq`*[_type == "settings"][0]{
+export const settingsQuery = groq`*[_type == "settings"][0]{
+  ...,
+  comboStudioLogo{
+    ...,
+    asset->
+  },
+  navPrimary[]{
+    ...,
+    _type == 'linkInternal' => {
       ...,
-      comboStudioLogo{
-        ...,
-			  asset->
+      link->{
+        _type,
+        slug,
+        subMenu
       },
-      navPrimary[]{
+    },
+    _type == 'menuItem' => {
+      ...,
+      link{
         ...,
-        _type == 'linkInternal' => {
-          ...,
-          link->{
-            _type,
-            slug,
-            subMenu
-          },
-        },
-        _type == 'menuItem' => {
-          ...,
-          link{
-            ...,
-            link->{
-              _type,
-              slug,
-              subMenu
-            }
-          },
-          subMenu[]{
-            ...,
-            // link->{
-            //   _type,
-            //   slug
-            // }
-            _type == 'linkInternal' => {
-              ...,
-              link->{
-                _type,
-                slug,
-                subMenu
-              },
-            },
-          }
+        link->{
+          _type,
+          slug,
+          subMenu
         }
       },
-      navSecondary[]{
+      subMenu[]{
         ...,
+        // link->{
+        //   _type,
+        //   slug
+        // }
         _type == 'linkInternal' => {
           ...,
           link->{
@@ -62,42 +47,63 @@ export async function getSettings(): Promise<Settings> {
             subMenu
           },
         },
+      }
+    }
+  },
+  navSecondary[]{
+    ...,
+    _type == 'linkInternal' => {
+      ...,
+      link->{
+        _type,
+        slug,
+        subMenu
       },
-      comboLogo{
-        ...,
-			  asset->
-      },
-    }`
-  );
+    },
+  },
+  comboLogo{
+    ...,
+    asset->
+  },
+}`;
+
+export async function getSettings(): Promise<Settings> {
+  return sanityFetch({
+    query: settingsQuery,
+    tags: ["settings"],
+  });
+  // return client.fetch(
+
+  // );
 }
 
 /*****************************************************************************************************
  * Landing
  */
 
-export const landingQ = groq`*[_type == "landing"][0]{
-  ...,
-  seo{
-    ${seo}
-  },
+// export const landingQ = groq`*[_type == "landing"][0]{
+//   ...,
+//   seo{
+//     ${seo}
+//   },
 
-  modules[]{
-    ...,
-    ${heroUI},
-    ${textUI},
-    ${contactsUI}
-  }
-}`;
-export async function getLanding(): Promise<Landing> {
-  // return client.fetch(landingQ, {});
-  return cachedClient(landingQ, {});
-}
+//   modules[]{
+//     ...,
+//     ${heroUI},
+//     ${textUI},
+//     ${contactsUI}
+//   }
+// }`;
+// export async function getLanding(): Promise<Landing> {
+//   // return client.fetch(landingQ, {});
+//   return cachedClient(landingQ, {});
+// }
 
 /*****************************************************************************************************
  * Home
  */
 
-export const homeQ = groq`*[_type == "home"][0]{
+export const homeQuery = groq`*[_type == "home"][0]{
   ...,
   seo{
     ${seo}
@@ -108,7 +114,11 @@ export const homeQ = groq`*[_type == "home"][0]{
   }
 }`;
 export async function getHome(): Promise<Home> {
-  return cachedClient(homeQ, {});
+  return sanityFetch({
+    query: homeQuery,
+    tags: ["home"],
+  });
+  // return cachedClient(homeQuery, {});
 }
 /*****************************************************************************************************
  * PAGE MODULAIRE
@@ -124,5 +134,10 @@ export const pageModulaireQuery = groq`*[_type == "pageModulaire" && slug.curren
 }`;
 export async function getPageModulaire(slug: string): Promise<PageModulaire> {
   // revalidatePath(slug);
-  return cachedClient(pageModulaireQuery, { slug: slug });
+  return sanityFetch({
+    query: pageModulaireQuery,
+    tags: ["pageModulaire"],
+    qParams: { slug: slug },
+  });
+  // return cachedClient(pageModulaireQuery, { slug: slug });
 }

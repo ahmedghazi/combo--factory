@@ -33,7 +33,7 @@ const ModuleListPageUI = ({ input }: Props) => {
               <li key={i}>
                 <button
                   className={clsx(
-                    "btn--pill",
+                    "btn--pill text-accent",
                     tag === item.slug?.current && "is-active"
                   )}
                   onClick={() => updateTag(item.slug?.current || "")}

@@ -1,7 +1,7 @@
 import ContentModulaire from "@/app/components/ContentModulaire";
 import website from "@/app/config/website";
 import { PageModulaire } from "@/app/types/schema";
-import { getClient } from "@/app/utils/sanity-client";
+import { getClient } from "@/app/utils/sanity.client";
 import {
   getPageModulaire,
   pageModulaireQuery,
