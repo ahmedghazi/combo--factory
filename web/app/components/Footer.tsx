@@ -14,8 +14,7 @@ type Props = {
 };
 
 const Footer = ({ settings }: Props) => {
-  // const {}
-  console.log(settings);
+  // console.log(settings);
   return (
     <footer>
       <div className="grid md:grid-cols-3 gap-lg md:gap-md">

@@ -358,7 +358,7 @@
           .slick-arrow {
             width: auto;
             height: auto;
-            bottom: var(--space-md);
+            bottom: calc(var(--space-md) * -2);
             top: unset;
             text-indent: 0;
             padding: 0 var(--space-sm);
@@ -367,6 +367,9 @@
             &:hover {
               color: var(--color-primary);
             }
+          }
+          .slick-dots {
+            bottom: calc(var(--space-md) * -2);
           }
           a.btn--pill {
             z-index: 50;

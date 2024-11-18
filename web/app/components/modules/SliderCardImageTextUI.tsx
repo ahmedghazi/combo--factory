@@ -22,6 +22,17 @@ const ModuleSliderCardImageTextUI = ({ input }: Props) => {
               slidesToShow: gridSize || 3,
               slidesToScroll: gridSize || 3,
               dots: true,
+              responsive: [
+                {
+                  breakpoint: 1024,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    // infinite: true,
+                    // dots: true
+                  },
+                },
+              ],
             }}
           >
             {items?.map((item, i) => (

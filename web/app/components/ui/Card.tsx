@@ -4,6 +4,7 @@ import FigureUI from "./Figure";
 import { _localizeField } from "@/app/utils/utils";
 import { PortableText } from "next-sanity";
 import portableTextComponents from "@/app/utils/portableTextComponents";
+import FigureComponent from "./Figure";
 
 type Props = {
   image?: Figure;
@@ -17,7 +18,7 @@ const Card = ({ image, title, tag, excerpt, text }: Props) => {
   return (
     <article className="card">
       <div className="inner">
-        {image && <FigureUI asset={image.image} />}
+        {image && <FigureComponent asset={image.image} />}
         <div className="content">
           <div className="header">
             {title && <h3>{title}</h3>}
