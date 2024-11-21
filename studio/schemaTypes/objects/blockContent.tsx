@@ -43,12 +43,12 @@ export default defineType({
         {
           title: 'Text LG (17px)',
           value: 'h3 text-lg',
-          component: Text2L,
+          component: TextL,
         },
         {
           title: 'Text 2LG (26px)',
           value: 'h2 text-2lg',
-          component: TextL,
+          component: Text2L,
         },
         // {title: 'H4', value: 'h4'},
         // {title: 'Quote', value: 'blockquote'},
