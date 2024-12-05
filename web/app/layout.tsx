@@ -7,6 +7,8 @@ import { getSettings } from "./utils/sanity-queries";
 import { PageContextProvider } from "./context/PageContext";
 import { LocaleContextProvider } from "./context/LocaleContext";
 import Cursor from "./components/ui/Cursor";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -32,9 +34,11 @@ export default async function RootLayout({
             <div id="page">
               {/* <pre>{JSON.stringify(settings, null, 2)}</pre> */}
               <Header settings={settings} />
+
               <main>{children}</main>
               <Footer settings={settings} />
               <Cursor color="#fff" size={10} />
+              {draftMode().isEnabled && <VisualEditing />}
             </div>
           </PageContextProvider>
         </LocaleContextProvider>

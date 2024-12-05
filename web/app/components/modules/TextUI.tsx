@@ -6,12 +6,14 @@ import { SanityReference, TextUI } from "@/app/types/schema";
 import { _localizeField } from "@/app/utils/utils";
 import { SanityImageAsset } from "sanity-codegen";
 import AOS from "../ui/AOS";
+import { stegaClean } from "@sanity/client/stega";
 
 type Props = {
   input: TextUI;
 };
 
 const ModuleTextUI = ({ input }: Props) => {
+  const rawLook = stegaClean(input.look);
   const {
     look,
     title,
@@ -21,7 +23,7 @@ const ModuleTextUI = ({ input }: Props) => {
     backgroundImage,
     foregroundColor,
   } = input;
-  // console.log(title);
+  console.log(input);
 
   const style = {
     "--backgroundColor": backgroundColor,
@@ -38,7 +40,7 @@ const ModuleTextUI = ({ input }: Props) => {
 
         <div className="row center-xs">
           <div className="col-md-10 col-xs-12">
-            {look === "default" && (
+            {rawLook === "default" && (
               <>
                 {title && (
                   <AOS>

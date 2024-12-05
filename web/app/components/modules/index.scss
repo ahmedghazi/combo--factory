@@ -113,12 +113,21 @@
       }
     }
     &.module--list-lieu-ui {
-      .lieu:nth-child(odd) > .summary-detail {
-        & > .summary {
-          background-color: black;
-          color: white;
-          svg path {
-            fill: white;
+      .lieu {
+        &:nth-child(even) > .summary-detail {
+          & > .summary {
+            svg path {
+              fill: black;
+            }
+          }
+        }
+        &:nth-child(odd) > .summary-detail {
+          & > .summary {
+            background-color: black;
+            color: white;
+            svg path {
+              fill: white;
+            }
           }
         }
       }

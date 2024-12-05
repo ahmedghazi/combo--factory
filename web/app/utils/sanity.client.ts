@@ -6,6 +6,7 @@ import {
   type QueryParams,
 } from "@sanity/client";
 import { projectId, dataset, apiVersion, token } from "./sanity.api";
+// import { draftMode } from "next/headers";
 
 const config: ClientConfig = {
   projectId,
@@ -13,7 +14,12 @@ const config: ClientConfig = {
   apiVersion,
   // set CDN to live API in development mode
   useCdn: process.env.NODE_ENV === "development" ? true : false,
+  // perspective: draftMode().isEnabled ? "previewDrafts" : "published",
   token,
+  // stega: {
+  //   enabled: draftMode().isEnabled,
+  //   studioUrl: "https://backoffice--combo-factory.sanity.studio/",
+  // },
 };
 
 export const sanityConfig = {
@@ -24,6 +30,7 @@ export const sanityConfig = {
 const client = createClient(config);
 
 export function getClient(preview?: { token?: string }): SanityClient {
+  // import { draftMode } from "next/headers";
   if (preview) {
     if (!preview.token) {
       throw new Error("You must provide a token to preview drafts");
@@ -33,6 +40,10 @@ export function getClient(preview?: { token?: string }): SanityClient {
       useCdn: false,
       ignoreBrowserTokenWarning: true,
       perspective: "previewDrafts",
+      // stega: {
+      //   enabled: true,
+      //   studioUrl: "https://backoffice--combo-factory.sanity.studio/",
+      // },
     });
   }
   return client;

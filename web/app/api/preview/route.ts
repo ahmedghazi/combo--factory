@@ -23,8 +23,8 @@ export async function GET(request: Request) {
       target = `/${slug}`;
       break;
   }
-  // console.log(request.url)
-  // console.log(type, slug, target)
+  console.log(request.url);
+  console.log(type, slug, target);
 
   draftMode().enable();
   redirect(target);

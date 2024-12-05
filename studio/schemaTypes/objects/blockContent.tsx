@@ -40,15 +40,15 @@ export default defineType({
         },
         {title: 'H2', value: 'h2'},
         {title: 'H3', value: 'h3'},
+        // {
+        //   title: 'Text LG (17px)',
+        //   value: 'h3 text-lg',
+        //   component: TextL,
+        // },
         {
-          title: 'Text LG (17px)',
-          value: 'h3 text-lg',
-          component: TextL,
-        },
-        {
-          title: 'Text 2LG (26px)',
+          title: 'Text LG (26px)',
           value: 'h2 text-2lg',
-          component: Text2L,
+          component: TextL,
         },
         // {title: 'H4', value: 'h4'},
         // {title: 'Quote', value: 'blockquote'},
