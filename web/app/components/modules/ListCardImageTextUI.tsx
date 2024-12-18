@@ -21,7 +21,7 @@ const ModuleListCardImageTextUI = ({ input }: Props) => {
         <div
           className={clsx(
             "grid gap-xl md:gap-y-xl md:gap-md",
-            `md:grid-cols-${gridSize || 3}`
+            `grid-cols-1 md:grid-cols-${gridSize || 3}`
           )}
         >
           {items?.map((item, i) => (

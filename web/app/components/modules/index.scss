@@ -242,6 +242,7 @@
       }
       @media all and (max-width: $md) {
         text-align: center;
+
         .flex {
           flex-direction: column-reverse !important;
         }
@@ -335,9 +336,19 @@
     &.module--list-card-image-text-ui {
       .inner {
         padding: var(--space-50);
+
+        @media all and (max-width: 1300px) {
+          .md\:grid-cols-4 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
         @media all and (max-width: $md) {
           padding: var(--space-lg) var(--space-m-md);
           gap: 1em;
+          .md\:grid-cols-4 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+          }
         }
       }
       .card {
