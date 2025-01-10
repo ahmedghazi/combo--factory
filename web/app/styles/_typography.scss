@@ -124,10 +124,16 @@ p,
       margin-left: 0.4em;
     }
   }
-  &.headline a {
-    font-family: var(--font-secondary);
-    &.btn--pill {
-      font-family: var(--font-primary-mono);
+  &.md\:text-2lg,
+  &.headline {
+    line-height: 1;
+  }
+  &.headline {
+    a {
+      font-family: var(--font-secondary);
+      &.btn--pill {
+        font-family: var(--font-primary-mono);
+      }
     }
   }
 }
