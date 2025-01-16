@@ -15,6 +15,8 @@ type Props = {
 };
 
 const Card = ({ image, title, tag, excerpt, text }: Props) => {
+  // console.log(title);
+  // console.log(text);
   return (
     <article className="card">
       <div className="inner">
@@ -32,6 +34,7 @@ const Card = ({ image, title, tag, excerpt, text }: Props) => {
           )}
         </div>
       </div>
+      {/* <pre>{JSON.stringify(text, null, 2)}</pre> */}
     </article>
   );
 };
