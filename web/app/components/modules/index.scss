@@ -409,6 +409,11 @@
     }
 
     @media all and (max-width: 1300px) {
+      &.module--hero-split-scroll-ui {
+        img {
+          object-position: center center;
+        }
+      }
       &.module--text-image-ui {
         .btn--pill {
           display: inline-block;
@@ -420,6 +425,15 @@
           span {
             display: inline;
             max-width: 100%;
+          }
+        }
+      }
+      &.module--list-lieu-ui {
+        .summary {
+          padding-left: 1em;
+          padding-right: 1em;
+          .icon-arrow {
+            right: 0;
           }
         }
       }
