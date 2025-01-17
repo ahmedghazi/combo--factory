@@ -9,6 +9,7 @@ import { LocaleContextProvider } from "./context/LocaleContext";
 import Cursor from "./components/ui/Cursor";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity";
+import CookieConsent from "./components/ui/CookieConsent";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -39,6 +40,7 @@ export default async function RootLayout({
               <Footer settings={settings} />
               <Cursor color="#fff" size={10} />
               {draftMode().isEnabled && <VisualEditing />}
+              <CookieConsent />
             </div>
           </PageContextProvider>
         </LocaleContextProvider>
