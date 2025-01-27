@@ -49,7 +49,7 @@ const NavPrimary = ({ input }: Props) => {
   const isMenuItemWithSubmenu = (item: SanityKeyed<MenuItem>) => {
     return item.subMenu && item.subMenu.length > 0;
   };
-  // console.log(input);
+
   return (
     <nav>
       {/* <pre>{JSON.stringify(input, null, 2)}</pre> */}
