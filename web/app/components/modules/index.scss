@@ -355,8 +355,9 @@
         .inner {
           padding: 0;
           img {
-            aspect-ratio: 1 / 1;
-            object-fit: contain;
+            // aspect-ratio: 1 / 1;
+            // object-fit: contain;
+            aspect-ratio: unset;
           }
         }
       }
