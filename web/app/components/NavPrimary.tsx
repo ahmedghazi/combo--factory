@@ -15,15 +15,16 @@ import LinkTransition from "./ui/LinkTransition";
 type NavLinkProps = {
   href: string;
   name: string;
+  cta: boolean;
 };
 
-const NavLink = ({ href, name }: NavLinkProps) => {
+const NavLink = ({ href, name, cta }: NavLinkProps) => {
   // const { asPath } = useRouter();
   const pathname = usePathname();
   const ariaCurrent = href === pathname ? "page" : undefined;
 
   return (
-    <LinkTransition href={href} aria-current={ariaCurrent}>
+    <LinkTransition href={href} aria-current={ariaCurrent} cta={cta}>
       {name}
     </LinkTransition>
   );
@@ -52,7 +53,7 @@ const NavPrimary = ({ input }: Props) => {
   return (
     <nav>
       {/* <pre>{JSON.stringify(input, null, 2)}</pre> */}
-      <ul className="menu flex justify-center">
+      <ul className="menu flex justify-center items-center">
         {input.map((item, i) => (
           <li key={i}>
             <NavLink
@@ -66,6 +67,7 @@ const NavPrimary = ({ input }: Props) => {
                   ? _localizeField(item.link?.label)
                   : _localizeField(item.label)
               }
+              cta={item._type === "linkInternal" && item.cta === true}
             />
             {item._type === "linkInternal" &&
               isLinkInternalWithSubmenu(item) && (
@@ -106,30 +108,6 @@ const NavPrimary = ({ input }: Props) => {
                 ))}
               </ul>
             )}
-            {/* {item._type === "linkInternal" &&
-              isLinkInternalWithSubmenu(item) && (
-                <ul className="sub-menu">
-                  {item.link.subMenu.map((subItem: KeyVal, j: number) => (
-                    <li key={j}>
-                      <Link href={`${_linkResolver(item.link)}#${subItem.val}`}>
-                        {_localizeField(subItem.key)}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            {item._type === "menuItem" && isMenuItemWithSubmenu(item) && (
-              <ul className="sub-menu">
-                {item.subMenu &&
-                  item.subMenu.map((subItem, j: number) => (
-                    <li key={j}>
-                      <Link href={_linkResolver(subItem.link)}>
-                        {_localizeField(subItem.label)}
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            )} */}
           </li>
         ))}
       </ul>
