@@ -52,7 +52,6 @@ const NavPrimary = ({ input }: Props) => {
 
   return (
     <nav>
-      {/* <pre>{JSON.stringify(input, null, 2)}</pre> */}
       <ul className="menu flex justify-center items-center">
         {input.map((item, i) => (
           <li key={i}>
