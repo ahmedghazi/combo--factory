@@ -21,6 +21,7 @@ const ModuleSplitImageTextUI = ({ input }: Props) => {
         style={{
           backgroundImage: `url(${input.image?.asset.url})`,
           backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div className="flex flex-col md:flex-row">
