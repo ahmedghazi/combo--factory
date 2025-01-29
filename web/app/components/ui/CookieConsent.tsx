@@ -6,7 +6,7 @@ import Link from "next/link";
 import { _linkResolver, _localizeField } from "@/app/utils/utils";
 
 type Props = {
-  legals: LinkInternal;
+  legals?: LinkInternal;
 };
 
 const CookieConsent = ({ legals }: Props) => {

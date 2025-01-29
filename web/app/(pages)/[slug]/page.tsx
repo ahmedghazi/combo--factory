@@ -46,7 +46,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
     data = (await getPageModulaire(params.slug)) as PageModulaire;
   }
 
-  if (!data) return <div>please edit page</div>;
+  if (!data) return <div>please edit </div>;
   return (
     <div
       className="template template--page-modulaire"
