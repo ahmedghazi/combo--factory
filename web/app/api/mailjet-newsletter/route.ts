@@ -43,7 +43,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
       }
     );
   } catch (error: any) {
-    // console.log(error);
+    console.log(error);
 
     return new NextResponse(JSON.stringify(error), {
       status: error.statusCode,
