@@ -40,7 +40,7 @@ export default async function RootLayout({
               <Footer settings={settings} />
               <Cursor color="#fff" size={10} />
               {draftMode().isEnabled && <VisualEditing />}
-              <CookieConsent />
+              <CookieConsent legals={settings.legalsUrl} />
             </div>
           </PageContextProvider>
         </LocaleContextProvider>

@@ -140,6 +140,13 @@ export default defineType({
     }),
 
     defineField({
+      name: 'legalsUrl',
+      title: 'Page de mentions légales',
+      type: 'linkInternal',
+      group: 'misc',
+    }),
+
+    defineField({
       name: 'customCss',
       type: 'text',
       group: 'design',

@@ -65,6 +65,13 @@ export const settingsQuery = groq`*[_type == "settings"][0]{
     ...,
     asset->
   },
+  legalsUrl{
+    ...,
+    link->{
+      _type,
+      slug,
+    }
+}
 }`;
 
 export async function getSettings(): Promise<Settings> {

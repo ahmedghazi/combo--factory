@@ -103,7 +103,7 @@ export function infinitScrollOnePage(
   }
 
   function _animate(nextVal: number) {
-    console.log(rootMarginSize);
+    // console.log(rootMarginSize);
     const step = window.innerHeight - rootMarginSize;
     const rotation = (nextVal * 180) / step;
     var obj = { lerpCache: lerpCache };

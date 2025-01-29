@@ -23,7 +23,7 @@ const ModuleTextUI = ({ input }: Props) => {
     backgroundImage,
     foregroundColor,
   } = input;
-  console.log(input);
+  // console.log(input);
 
   const style = {
     "--backgroundColor": backgroundColor,
