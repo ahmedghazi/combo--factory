@@ -118,6 +118,11 @@
   }
   @media all and (max-width: $md) {
     .summary {
+      // background-color: orange;
+      .title {
+        padding-left: var(--text-m-xl);
+        padding-right: var(--text-m-xl);
+      }
       .icon-arrow {
         right: var(--space-lg);
         svg {
