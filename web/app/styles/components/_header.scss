@@ -111,6 +111,8 @@ header {
       display: none;
       ul {
         flex-direction: column;
+        // justify-content: start !important;
+        align-items: start !important;
         gap: 1em;
         .sub-menu {
           display: block;
