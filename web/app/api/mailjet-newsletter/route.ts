@@ -55,7 +55,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
 const createContact = async (email: string, name?: string) => {
   try {
     const { body } = await mailjet.post("contact", { version: "v3" }).request({
-      IsExcludedFromCampaigns: "true",
+      IsExcludedFromCampaigns: "false",
       Name: `${name}`,
       Email: `${email}`,
     });
