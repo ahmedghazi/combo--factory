@@ -80,7 +80,6 @@ const portableTextComponents: PortableTextComponents = {
       );
     },
     linkExternal: ({ children, value }) => {
-      // console.log(value);
       return (
         <a
           href={value.href}
