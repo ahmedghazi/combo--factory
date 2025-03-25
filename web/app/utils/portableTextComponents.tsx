@@ -49,7 +49,12 @@ const portableTextComponents: PortableTextComponents = {
       return <Figure asset={value.asset} />;
     },
     embed: ({ value }) => {
-      return <VideoWrapper url={value.url} />;
+      if (value.url) {
+        return <VideoWrapper url={value.url} />;
+      }
+      if (value.iframe) {
+        return <div dangerouslySetInnerHTML={{ __html: value.iframe }} />;
+      }
     },
   },
 

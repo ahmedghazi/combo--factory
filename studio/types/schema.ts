@@ -748,9 +748,16 @@ export type Embed = {
   /**
    * url — `url`
    *
-   * url publique du media ex: https://www.youtube.com/watch?v=exTZ9vB6ZeE
+   * for youtube, vimeo ex: https://www.youtube.com/watch?v=exTZ9vB6ZeE
    */
   url?: string;
+
+  /**
+   * iframe — `text`
+   *
+   *
+   */
+  iframe?: string;
 };
 
 export type KeyVal = {
