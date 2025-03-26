@@ -117,6 +117,11 @@ p,
   }
   a {
     font-family: var(--font-primary-mono);
+    &.btn--pill {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 100%;
+    }
     &:not(.btn--pill)::after {
       content: "↗";
       display: inline-block;
