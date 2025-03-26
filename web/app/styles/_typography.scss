@@ -125,7 +125,6 @@ p,
     &:not(.btn--pill)::after {
       content: "↗";
       display: inline-block;
-      // vertical-align: baseline;
       margin-left: 0.4em;
     }
   }
