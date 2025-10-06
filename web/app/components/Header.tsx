@@ -32,7 +32,7 @@ const Header = ({ settings }: Props) => {
         </div>
       )} */}
       <div className="inner">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between md:justify-start gap-xl  items-center">
           <div className="logo logo--combo">
             <Link href={"/"}>
               <svg

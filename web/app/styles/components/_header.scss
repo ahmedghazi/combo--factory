@@ -34,6 +34,7 @@ header {
     font-family: var(--font-primary-mono);
     ul {
       gap: 70px;
+      gap: var(--space-xl);
     }
     li {
       position: relative;
