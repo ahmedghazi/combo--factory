@@ -22,15 +22,6 @@ const Header = ({ settings }: Props) => {
         scrollY > 100 && scrollDirection ? scrollDirection : ""
       }`}
     >
-      {/* {settings.marqueeTopNav && (
-        <div className='marquee-wrapper text-sm'>
-          <Marquee
-            text={settings.marqueeTopNav}
-            foregroundColor='#000'
-            backgroundColor='#ffdc00'
-          />
-        </div>
-      )} */}
       <div className="inner">
         <div className="flex justify-between md:justify-start gap-xl  items-center">
           <div className="logo logo--combo">
