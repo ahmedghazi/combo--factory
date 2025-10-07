@@ -56,7 +56,7 @@ const Header = ({ settings }: Props) => {
               </svg>
             </Link>
           </div>
-          <div className="flex-2-">
+          <div className="flex-2">
             <Burger />
             {settings.navPrimary && <NavPrimary input={settings.navPrimary} />}
           </div>

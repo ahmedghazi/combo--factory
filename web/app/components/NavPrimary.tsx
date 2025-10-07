@@ -11,6 +11,7 @@ import Link from "next/link";
 import { _linkResolver, _localizeField, _localizeText } from "../utils/utils";
 import { usePathname, useRouter } from "next/navigation";
 import LinkTransition from "./ui/LinkTransition";
+import clsx from "clsx";
 
 type NavLinkProps = {
   href: string;
@@ -52,9 +53,18 @@ const NavPrimary = ({ input }: Props) => {
 
   return (
     <nav>
-      <ul className="menu flex justify-center items-center">
+      <ul className="menu flex justify-start items-center">
         {input.map((item, i) => (
-          <li key={i}>
+          <li
+            key={i}
+            className={clsx(
+              `menu--${item._type}`,
+              item._type === "linkInternal" &&
+                isLinkInternalWithSubmenu(item) &&
+                "has-submenu",
+              item._type === "linkInternal" && item.cta && "is-cta"
+            )}
+          >
             <NavLink
               href={
                 item._type === "menuItem"

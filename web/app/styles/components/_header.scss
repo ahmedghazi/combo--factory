@@ -41,6 +41,11 @@ header {
       &:hover .sub-menu {
         display: flex;
       }
+      &.is-cta {
+        display: flex;
+        justify-content: flex-end;
+        flex: 2;
+      }
     }
     .sub-menu {
       position: absolute;
@@ -86,7 +91,8 @@ header {
       z-index: 10;
       width: 30px;
       height: toRem(25);
-      margin: auto;
+      // margin: auto;
+      margin-left: auto;
       .burger {
         @include burger(30px, 1px, 6px, var(--color-primary));
         transform: translateY(10px);
