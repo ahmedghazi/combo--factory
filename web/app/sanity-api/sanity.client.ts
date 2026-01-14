@@ -5,7 +5,7 @@ import {
   type ClientConfig,
   type QueryParams,
 } from "@sanity/client";
-import { projectId, dataset, apiVersion, token } from "./sanity.api";
+import { projectId, dataset, apiVersion, token, studioUrl } from "./sanity.api";
 // import { draftMode } from "next/headers";
 
 const config: ClientConfig = {
@@ -14,12 +14,7 @@ const config: ClientConfig = {
   apiVersion,
   // set CDN to live API in development mode
   useCdn: process.env.NODE_ENV === "development" ? true : false,
-  // perspective: draftMode().isEnabled ? "previewDrafts" : "published",
   token,
-  // stega: {
-  //   enabled: draftMode().isEnabled,
-  //   studioUrl: "https://backoffice--combo-factory.sanity.studio/",
-  // },
 };
 
 export const sanityConfig = {
@@ -40,10 +35,10 @@ export function getClient(preview?: { token?: string }): SanityClient {
       useCdn: false,
       ignoreBrowserTokenWarning: true,
       perspective: "previewDrafts",
-      // stega: {
-      //   enabled: true,
-      //   studioUrl: "https://backoffice--combo-factory.sanity.studio/",
-      // },
+      stega: {
+        enabled: true,
+        studioUrl: studioUrl,
+      },
     });
   }
   return client;
@@ -59,7 +54,8 @@ export async function sanityFetch<QueryResponse>({
   tags: string[];
 }): Promise<QueryResponse> {
   return client.fetch<QueryResponse>(query, qParams, {
-    cache: process.env.NODE_ENV === "development" ? "no-store" : "force-cache",
+    // cache: process.env.NODE_ENV === "development" ? "no-store" : "force-cache",
+    cache: "no-store",
     next: { tags },
   });
 }

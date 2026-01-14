@@ -1,10 +1,9 @@
 import { BlockContent, Figure } from "@/app/types/schema";
 import React from "react";
 import FigureUI from "./Figure";
-import { _localizeField } from "@/app/utils/utils";
 import { PortableText } from "next-sanity";
-import portableTextComponents from "@/app/utils/portableTextComponents";
 import FigureComponent from "./Figure";
+import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 
 type Props = {
   image?: Figure;

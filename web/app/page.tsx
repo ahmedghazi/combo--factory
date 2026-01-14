@@ -1,10 +1,11 @@
 import { draftMode } from "next/headers";
 import { Metadata } from "next";
 import website from "./config/website";
-import { getHome, homeQuery } from "./utils/sanity-queries";
 import { Home } from "./types/schema";
-import { getClient } from "./utils/sanity.client";
 import ContentModulaire from "./components/ContentModulaire";
+import { notFound } from "next/navigation";
+import { getHome, HOME_QUERY } from "./sanity-api/sanity-queries";
+import { getClient } from "./sanity-api/sanity.client";
 
 export const revalidate = 3600; // revalidate every hour
 export const dynamic = "force-dynamic";
@@ -35,14 +36,14 @@ const HomePage: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   let data: Home;
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      homeQuery,
+      HOME_QUERY,
       params
     );
   } else {
     data = (await getHome()) as Home;
   }
   // console.log(data);
-  if (!data) return <div>please edit page</div>;
+  if (!data) return notFound();
   return (
     <div className="template template--home" data-template="home">
       {/* <ContentLanding input={data} /> */}

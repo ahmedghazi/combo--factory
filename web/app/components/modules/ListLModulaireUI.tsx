@@ -2,7 +2,7 @@ import { ListLModulaireUI } from "@/app/types/schema";
 import React from "react";
 import SummaryDetailFramer from "../ui/SummaryDetailFramer";
 import ContentModulaire from "../ContentModulaire";
-import { _localizeField } from "@/app/utils/utils";
+import { _localizeField } from "@/app/sanity-api/utils";
 
 type Props = {
   input: ListLModulaireUI;

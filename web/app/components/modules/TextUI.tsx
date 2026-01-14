@@ -1,12 +1,12 @@
 import React from "react";
 import { PortableText } from "@portabletext/react";
-import portableTextComponents from "@/app/utils/portableTextComponents";
 import clsx from "clsx";
 import { SanityReference, TextUI } from "@/app/types/schema";
-import { _localizeField } from "@/app/utils/utils";
 import { SanityImageAsset } from "sanity-codegen";
 import AOS from "../ui/AOS";
 import { stegaClean } from "@sanity/client/stega";
+import { _localizeField } from "@/app/sanity-api/utils";
+import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 
 type Props = {
   input: TextUI;

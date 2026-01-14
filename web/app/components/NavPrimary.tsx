@@ -8,10 +8,10 @@ import {
   SanityKeyed,
 } from "../types/schema";
 import Link from "next/link";
-import { _linkResolver, _localizeField, _localizeText } from "../utils/utils";
 import { usePathname, useRouter } from "next/navigation";
 import LinkTransition from "./ui/LinkTransition";
 import clsx from "clsx";
+import { _linkResolver, _localizeField } from "../sanity-api/utils";
 
 type NavLinkProps = {
   href: string;

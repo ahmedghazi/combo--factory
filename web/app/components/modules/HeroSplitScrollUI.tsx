@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Figure, HeroSplitScrollUI } from "@/app/types/schema";
-import { urlFor } from "@/app/utils/sanity-utils";
+// import { urlFor } from "@/app/sanity-api/sanity-utils";
 import Image from "next/image";
-import { _localizeField } from "@/app/utils/utils";
-import { infinitScroll } from "@/app/utils/infinite-scroll-plugin";
-import { infinitScrollOnePage } from "@/app/utils/infinite-scroll-plugin-one-page";
+// import { _localizeField } from "@/app/sanity-api/utils";
+// import { infinitScroll } from "@/app/sanity-api/infinite-scroll-plugin";
+// import { infinitScrollOnePage } from "@/app/sanity-api/infinite-scroll-plugin-one-page";
 import useDeviceDetect from "@/app/hooks/useDeviceDetect";
+import { infinitScrollOnePage } from "@/app/sanity-api/infinite-scroll-plugin-one-page";
+import { urlFor } from "@/app/sanity-api/sanity-utils";
 
 type Props = {
   input: HeroSplitScrollUI;

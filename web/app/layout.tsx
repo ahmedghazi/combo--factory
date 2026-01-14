@@ -3,13 +3,14 @@ import "./styles/index.scss";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import website from "./config/website";
-import { getSettings } from "./utils/sanity-queries";
+// import { getSettings } from "./utils/sanity-queries";
 import { PageContextProvider } from "./context/PageContext";
 import { LocaleContextProvider } from "./context/LocaleContext";
 import Cursor from "./components/ui/Cursor";
 import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity";
+import { VisualEditing } from "next-sanity/visual-editing";
 import CookieConsent from "./components/ui/CookieConsent";
+import { getSettings } from "./sanity-api/sanity-queries";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -25,7 +26,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const settings = await getSettings();
-
+  const { isEnabled } = await draftMode();
   return (
     <html lang="fr">
       <body className={""}>
@@ -38,8 +39,12 @@ export default async function RootLayout({
 
               <main>{children}</main>
               <Footer settings={settings} />
-              <Cursor color="#fff" size={10} />
-              {draftMode().isEnabled && <VisualEditing />}
+              {/* <Cursor color="#fff" size={10} /> */}
+              {isEnabled && (
+                <VisualEditing
+                  zIndex={1000} // Optional
+                />
+              )}
               <CookieConsent legals={settings.legalsUrl} />
             </div>
           </PageContextProvider>

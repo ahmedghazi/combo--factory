@@ -1,14 +1,15 @@
 import ContentModulaire from "@/app/components/ContentModulaire";
 import website from "@/app/config/website";
 import { PageModulaire } from "@/app/types/schema";
-import { getClient } from "@/app/utils/sanity.client";
+import { getClient } from "@/app/sanity-api/sanity.client";
 import {
   getPageModulaire,
-  pageModulaireQuery,
-} from "@/app/utils/sanity-queries";
+  PAGE_MODULAIRE_QUERY,
+} from "@/app/sanity-api/sanity-queries";
 import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import React from "react";
+import { notFound } from "next/navigation";
 
 // export const revalidate = 10; // revalidate every hour
 // export const dynamic = "force-dynamic";
@@ -39,14 +40,14 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   let data: PageModulaire;
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      pageModulaireQuery,
+      PAGE_MODULAIRE_QUERY,
       params
     );
   } else {
     data = (await getPageModulaire(params.slug)) as PageModulaire;
   }
 
-  if (!data) return <div>please edit </div>;
+  if (!data) return notFound();
   return (
     <div
       className="template template--page-modulaire"

@@ -1,5 +1,5 @@
 import { ListCardImageTextUI } from "@/app/types/schema";
-import { _localizeField } from "@/app/utils/utils";
+import { _localizeField } from "@/app/sanity-api/utils";
 import React from "react";
 import Card from "../ui/Card";
 import AOS from "../ui/AOS";

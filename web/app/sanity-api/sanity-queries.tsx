@@ -110,7 +110,7 @@ export async function getSettings(): Promise<Settings> {
  * Home
  */
 
-export const homeQuery = groq`*[_type == "home"][0]{
+export const HOME_QUERY = groq`*[_type == "home"][0]{
   ...,
   seo{
     ${seo}
@@ -122,15 +122,15 @@ export const homeQuery = groq`*[_type == "home"][0]{
 }`;
 export async function getHome(): Promise<Home> {
   return sanityFetch({
-    query: homeQuery,
+    query: HOME_QUERY,
     tags: ["home"],
   });
-  // return cachedClient(homeQuery, {});
+  // return cachedClient(HOME_QUERY, {});
 }
 /*****************************************************************************************************
  * PAGE MODULAIRE
  */
-export const pageModulaireQuery = groq`*[_type == "pageModulaire" && slug.current == $slug][0]{
+export const PAGE_MODULAIRE_QUERY = groq`*[_type == "pageModulaire" && slug.current == $slug][0]{
   ...,
   seo{
     ${seo}
@@ -142,9 +142,20 @@ export const pageModulaireQuery = groq`*[_type == "pageModulaire" && slug.curren
 export async function getPageModulaire(slug: string): Promise<PageModulaire> {
   // revalidatePath(slug);
   return sanityFetch({
-    query: pageModulaireQuery,
+    query: PAGE_MODULAIRE_QUERY,
     tags: ["pageModulaire"],
     qParams: { slug: slug },
   });
-  // return cachedClient(pageModulaireQuery, { slug: slug });
+  // return cachedClient(PAGE_MODULAIRE_QUERY, { slug: slug });
+}
+
+export const getAllPagesQuery = groq`*[_type == "pageModulaire"]{
+  _type, slug
+}`;
+export async function getAllPagesModulaire(): Promise<PageModulaire[]> {
+  // revalidatePath(slug);
+  return sanityFetch({
+    query: getAllPagesQuery,
+    tags: ["pagesModulaire"],
+  });
 }

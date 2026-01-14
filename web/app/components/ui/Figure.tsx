@@ -1,5 +1,5 @@
 import website from "@/app/config/website";
-import { urlFor } from "@/app/utils/sanity-utils";
+import { urlFor } from "@/app/sanity-api/sanity-utils";
 import Image from "next/image";
 import React from "react";
 import { SanityImageAsset } from "sanity-codegen";
@@ -18,7 +18,7 @@ const Figure = ({ asset, width = 1000, alt = website.title }: Props) => {
         width={asset?.metadata?.dimensions.width || width}
         height={asset?.metadata?.dimensions.height || width}
         alt={alt || ""}
-        sizes='100vw'
+        sizes="100vw"
         style={{
           width: "100%",
           height: "auto",

@@ -1,7 +1,7 @@
 import { Figure, LocaleString, LocaleText, Studio } from "@/app/types/schema";
 import React, { MouseEvent, useEffect } from "react";
 import FigureUI from "./Figure";
-import { _localizeField, _localizeText } from "@/app/utils/utils";
+import { _localizeField, _localizeText } from "@/app/sanity-api/utils";
 import AOS from "./AOS";
 import { subscribe } from "pubsub-js";
 

@@ -1,7 +1,7 @@
 import { CallOutUI } from "@/app/types/schema";
 import React from "react";
 import AOS from "../ui/AOS";
-import { _localizeField } from "@/app/utils/utils";
+import { _localizeField } from "@/app/sanity-api/utils";
 
 type Props = {
   input: CallOutUI;

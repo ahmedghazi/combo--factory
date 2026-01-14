@@ -1,13 +1,13 @@
 import React from "react";
 import { PortableText } from "@portabletext/react";
-import portableTextComponents from "@/app/utils/portableTextComponents";
 import clsx from "clsx";
 import { TextImageUI } from "@/app/types/schema";
-import { _localizeField } from "@/app/utils/utils";
 import { SanityImageAsset } from "sanity-codegen";
 import AOS from "../ui/AOS";
 import Image from "next/image";
-import { urlFor } from "@/app/utils/sanity-utils";
+import { _localizeField } from "@/app/sanity-api/utils";
+import portableTextComponents from "@/app/sanity-api/portableTextComponents";
+import { urlFor } from "@/app/sanity-api/sanity-utils";
 
 type Props = {
   input: TextImageUI;

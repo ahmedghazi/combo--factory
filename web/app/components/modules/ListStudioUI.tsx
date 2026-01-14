@@ -1,5 +1,5 @@
 import { ListStudioUI, Studio } from "@/app/types/schema";
-import { _localizeField } from "@/app/utils/utils";
+import { _localizeField } from "@/app/sanity-api/utils";
 import React, {
   MouseEvent,
   useCallback,

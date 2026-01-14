@@ -2,10 +2,10 @@ import React from "react";
 import { Studio } from "../types/schema";
 import AOS from "./ui/AOS";
 import Image from "next/image";
-import { urlFor } from "../utils/sanity-utils";
-import { _localizeField } from "../utils/utils";
+import { urlFor } from "../sanity-api/sanity-utils";
+import { _localizeField } from "../sanity-api/utils";
 import { PortableText } from "next-sanity";
-import portableTextComponents from "../utils/portableTextComponents";
+import portableTextComponents from "../sanity-api/portableTextComponents";
 import SummaryDetailFramer from "./ui/SummaryDetailFramer";
 import Slider from "./ui/slick-slider";
 type Props = {
