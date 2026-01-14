@@ -62,7 +62,8 @@ const NavPrimary = ({ input }: Props) => {
               item._type === "linkInternal" &&
                 isLinkInternalWithSubmenu(item) &&
                 "has-submenu",
-              item._type === "linkInternal" && item.cta && "is-cta"
+              item._type === "linkInternal" && item.cta && "is-cta",
+              item._type === "menuItem" && item.subMenu && "has-submenu"
             )}
           >
             <NavLink
