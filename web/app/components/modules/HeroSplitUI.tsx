@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Figure, HeroSplitScrollUI, HeroSplitUI } from "@/app/types/schema";
 import { urlFor } from "@/app/sanity-api/sanity-utils";
 import Image from "next/image";
-import { infinitScroll } from "@/app/sanity-api/infinite-scroll-plugin";
 import { _localizeField } from "@/app/sanity-api/utils";
 import AOS from "../ui/AOS";
 import useDeviceDetect from "@/app/hooks/useDeviceDetect";

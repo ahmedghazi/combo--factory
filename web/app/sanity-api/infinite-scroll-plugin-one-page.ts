@@ -107,12 +107,12 @@ export function infinitScrollOnePage(
     const step = window.innerHeight - rootMarginSize;
     const rotation = (nextVal * 180) / step;
     var obj = { lerpCache: lerpCache };
-    gsap.to(obj, 1, {
+    gsap.to(obj, {
       lerpCache: nextVal,
-      duration: 4,
+      duration: 1,
       delay: 0,
       ease: Power4.easeInOut,
-      onUpdate: (o) => {
+      onUpdate: () => {
         lerpCache = obj.lerpCache;
         _update();
         if (typeof onScroll === "function") onScroll(rotation);
