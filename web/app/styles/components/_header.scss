@@ -4,7 +4,9 @@ header {
   top: 0;
   z-index: 50;
   background-color: var(--color-bg);
-  transition: transform 0.3s var(--cubic), opacity 0.3s var(--cubic);
+  transition:
+    transform 0.3s var(--cubic),
+    opacity 0.3s var(--cubic);
 
   .marquee-wrapper {
     height: calc(var(--text-sm) * 2);
@@ -72,7 +74,7 @@ header {
       ul {
         gap: toRem(70);
         .has-submenu > a {
-          color: green;
+          // color: green;
           pointer-events: none;
         }
       }

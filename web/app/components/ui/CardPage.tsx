@@ -33,7 +33,7 @@ const CardPage = ({ input }: Props) => {
             <div className="image">
               {imageCover && <FigureUI asset={imageCover.image} />}
             </div>
-            <div className="header flex justify-between items-center">
+            <div className="header flex justify-between items-start gap-05e">
               {title && <h3>{_localizeField(title)}</h3>}
               {subTitle && (
                 <span className="cartouche cartouche--sm">
