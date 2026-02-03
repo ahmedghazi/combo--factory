@@ -4,22 +4,23 @@ import { Settings } from "../types/schema";
 import Image from "next/image";
 import { PortableText } from "next-sanity";
 import AOS from "./ui/AOS";
-import Link from "next/link";
 import MailJet from "./ui/MailJet";
 import { _linkResolver, _localizeField } from "../sanity-api/utils";
 import portableTextComponents from "../sanity-api/portableTextComponents";
 import { urlFor } from "../sanity-api/sanity-utils";
+import Link from "next/link";
 
 type Props = {
   settings: Settings;
 };
 
 const Footer = ({ settings }: Props) => {
+  // const {}
   return (
     <footer>
       <div className="grid md:grid-cols-3 gap-lg md:gap-md">
         <div className="text">
-          {settings.footerInfos && (
+          {settings?.footerInfos && (
             <div className="text mx-auto">
               <AOS>
                 <PortableText
@@ -31,7 +32,7 @@ const Footer = ({ settings }: Props) => {
           )}
         </div>
         <div className="logo">
-          {settings.comboLogo && (
+          {settings?.comboLogo && (
             <Image
               src={urlFor(settings.comboLogo?.asset, 230)}
               width={
@@ -55,23 +56,16 @@ const Footer = ({ settings }: Props) => {
           )}
         </div>
         <nav id="nav-secondary">
-          <div className="mb-md ">
-            <MailJet
-              action="https://xxx.us11.list-manage.com/subscribe/post?u=7ec729474c5f3671662bdeda0&id=5530cd0b9b&f_id=00fdafe0f0&tags=123"
-              field={{
-                name: "EMAIL",
-                placeholder: "votre e-mail",
-                type: "email",
-                required: true,
-              }}
-            />
-          </div>
           <AOS delay={1}>
             <ul className="flex flex-col md:items-end">
-              {settings.navSecondary?.map((item, i) => (
+              {settings?.navSecondary?.map((item, i) => (
                 <li key={i}>
                   {item.link && item.label && item._type === "linkExternal" && (
-                    <a href={item.link} target="_blank">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {item.label}
                     </a>
                   )}
