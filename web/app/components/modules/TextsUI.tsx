@@ -1,7 +1,7 @@
 import React from "react";
 import { PortableText } from "@portabletext/react";
 import clsx from "clsx";
-import { SanityReference, TextUI } from "@/app/types/schema";
+import { TextsUI } from "@/app/types/schema";
 import { SanityImageAsset } from "sanity-codegen";
 import AOS from "../ui/AOS";
 import { stegaClean } from "@sanity/client/stega";
@@ -9,21 +9,19 @@ import { _localizeField } from "@/app/sanity-api/utils";
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 
 type Props = {
-  input: TextUI;
+  input: TextsUI;
 };
 
-const ModuleTextUI = ({ input }: Props) => {
-  const rawLook = stegaClean(input.look);
+const ModuleTextsUI = ({ input }: Props) => {
   const {
     look,
     title,
     titleCentered,
-    text,
+    items,
     backgroundColor,
     backgroundImage,
     foregroundColor,
   } = input;
-  // console.log(input);
 
   const style = {
     "--backgroundColor": backgroundColor,
@@ -34,12 +32,13 @@ const ModuleTextUI = ({ input }: Props) => {
   const styleBgImage = {
     backgroundImage: `url(${backgroundImage?.asset.url})`,
   };
-
   const hasImage = backgroundImage && backgroundImage?.asset.url !== "";
-
+  // console.log(input);
   return (
-    <section className={clsx("module module--text-ui", `text-${look}`)}>
-      <div className={clsx("inner", `is-${look}`)} style={style}>
+    <section
+      className={clsx("module module--texts-ui", `text-${look || "default"}`)}
+    >
+      <div className={clsx("inner", `is-${look || "default"}`)} style={style}>
         {hasImage && (
           <>
             <div className="bg-image" style={styleBgImage}></div>
@@ -54,7 +53,7 @@ const ModuleTextUI = ({ input }: Props) => {
 
         <div className="row center-xs">
           <div className="col-md-10 col-xs-12">
-            {rawLook === "default" && (
+            {look === "default" && (
               <>
                 {title && (
                   <AOS>
@@ -65,15 +64,25 @@ const ModuleTextUI = ({ input }: Props) => {
                     </div>
                   </AOS>
                 )}
-                <div className="text mx-auto">
-                  {text && (
-                    <AOS>
-                      <PortableText
-                        value={_localizeField(text)}
-                        components={portableTextComponents}
-                      />
-                    </AOS>
+                <div
+                  className={clsx(
+                    "grid gap-md",
+                    `md:grid-cols-${items?.length}`,
                   )}
+                >
+                  {items &&
+                    items.map((item, i) => (
+                      <div key={i}>
+                        <AOS delay={i / 5}>
+                          <div className="text">
+                            <PortableText
+                              value={_localizeField(item)}
+                              components={portableTextComponents}
+                            />
+                          </div>
+                        </AOS>
+                      </div>
+                    ))}
                 </div>
               </>
             )}
@@ -91,42 +100,29 @@ const ModuleTextUI = ({ input }: Props) => {
 
                 <div className="row">
                   <div className="col-md-6 col-md-offset-3 col-xs-12">
-                    <div className="text ">
-                      {text && (
-                        <AOS>
-                          <PortableText
-                            value={_localizeField(text)}
-                            components={portableTextComponents}
-                          />
-                        </AOS>
+                    <div
+                      className={clsx(
+                        "grid gap-md",
+                        `md:grid-cols-${items?.length}`,
                       )}
+                    >
+                      {items &&
+                        items.map((item, i) => (
+                          <div key={i}>
+                            <AOS>
+                              <div className="text">
+                                <PortableText
+                                  value={_localizeField(item)}
+                                  components={portableTextComponents}
+                                />
+                              </div>
+                            </AOS>
+                          </div>
+                        ))}
                     </div>
                   </div>
                 </div>
               </div>
-            )}
-            {look === "columns" && (
-              <>
-                {title && (
-                  <AOS>
-                    <div className={titleCentered ? "text-center" : ""}>
-                      <h2 className={clsx("headline")}>
-                        {_localizeField(title)}
-                      </h2>
-                    </div>
-                  </AOS>
-                )}
-                {text && (
-                  <AOS>
-                    <div className="text">
-                      <PortableText
-                        value={_localizeField(text)}
-                        components={portableTextComponents}
-                      />
-                    </div>
-                  </AOS>
-                )}
-              </>
             )}
           </div>
         </div>
@@ -135,4 +131,4 @@ const ModuleTextUI = ({ input }: Props) => {
   );
 };
 
-export default ModuleTextUI;
+export default ModuleTextsUI;

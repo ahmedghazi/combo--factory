@@ -10,13 +10,13 @@ type Props = {
   input: ImageUI;
 };
 
-const ModuleImageUI = ({ input }: Props): JSX.Element => {
+const ModuleImageUI = ({ input }: Props) => {
   // console.log(input);
 
   return (
     <div
       className={clsx(
-        "module module--image"
+        "module module--image",
         // input.size && `md:col-span-${input.size === 1 ? 4 : input.size}`
       )}
     >

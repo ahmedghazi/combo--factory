@@ -1,3 +1,6 @@
+@use "../mixins";
+@use "../variables";
+
 header {
   position: fixed;
   width: 100%;
@@ -12,7 +15,7 @@ header {
     height: calc(var(--text-sm) * 2);
   }
   .inner {
-    padding: 12px var(--space-50);
+    padding: 12px var(--spacing-50);
   }
   &.is-up {
     transform: translateY(-100%);
@@ -36,7 +39,7 @@ header {
     font-family: var(--font-primary-mono);
     ul {
       gap: 70px;
-      gap: var(--space-xl);
+      gap: var(--spacing-xl);
     }
     li {
       position: relative;
@@ -51,9 +54,9 @@ header {
     }
     .sub-menu {
       position: absolute;
-      padding: var(--space-md);
+      padding: var(--spacing-md);
       background-color: var(--color-bg);
-      left: calc(var(--space-md) * -1);
+      left: calc(var(--spacing-md) * -1);
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -67,12 +70,12 @@ header {
       }
     }
   }
-  @media all and (min-width: $md) {
+  @media all and (min-width: variables.$md) {
     nav {
-      margin: 0 toRem(155);
+      margin: 0 mixins.toRem(155);
       margin: 0;
       ul {
-        gap: toRem(70);
+        gap: mixins.toRem(70);
         .has-submenu > a {
           // color: green;
           pointer-events: none;
@@ -80,10 +83,10 @@ header {
       }
     }
   }
-  @media all and (max-width: $md) {
+  @media all and (max-width: variables.$md) {
     padding: 0;
     .inner {
-      padding: toRem(11) toRem(16);
+      padding: mixins.toRem(11) mixins.toRem(16);
     }
     .logo {
       // width: 94px;
@@ -96,16 +99,16 @@ header {
     .burger-wrapper {
       z-index: 10;
       width: 30px;
-      height: toRem(25);
+      height: mixins.toRem(25);
       // margin: auto;
       margin-left: auto;
       .burger {
-        @include burger(30px, 1px, 6px, var(--color-primary));
+        @include mixins.burger(30px, 1px, 6px, var(--color-primary));
         transform: translateY(10px);
       }
       &.is-active {
         .burger {
-          @include burger-to-cross;
+          @include mixins.burger-to-cross;
         }
         & + nav {
           display: block;
@@ -119,8 +122,8 @@ header {
       // color: ;
       inset: 0;
       z-index: 0;
-      padding: toRem(16);
-      padding-top: var(--header-height);
+      padding: mixins.toRem(16);
+      padding-top: var(--header-h);
       display: none;
       ul {
         flex-direction: column;

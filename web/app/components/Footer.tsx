@@ -17,11 +17,11 @@ type Props = {
 const Footer = ({ settings }: Props) => {
   // const {}
   return (
-    <footer>
-      <div className="grid md:grid-cols-3 gap-lg md:gap-md">
-        <div className="text">
+    <footer className={settings.footerDark ? "is-dark" : ""}>
+      <div className='grid md:grid-cols-3 gap-lg md:gap-md'>
+        <div className='text'>
           {settings?.footerInfos && (
-            <div className="text mx-auto">
+            <div className='text mx-auto'>
               <AOS>
                 <PortableText
                   value={_localizeField(settings.footerInfos)}
@@ -31,7 +31,7 @@ const Footer = ({ settings }: Props) => {
             </div>
           )}
         </div>
-        <div className="logo">
+        <div className='logo'>
           {settings?.comboLogo && (
             <Image
               src={urlFor(settings.comboLogo?.asset, 230)}
@@ -42,7 +42,7 @@ const Footer = ({ settings }: Props) => {
                 settings.comboLogo.asset?.metadata?.dimensions.height || 230
               }
               alt={"Combo Studio settings.comboLogo"}
-              sizes="100vw"
+              sizes='100vw'
               style={{
                 width: "100%",
                 height: "auto",
@@ -55,17 +55,16 @@ const Footer = ({ settings }: Props) => {
             />
           )}
         </div>
-        <nav id="nav-secondary">
+        <nav id='nav-secondary'>
           <AOS delay={1}>
-            <ul className="flex flex-col md:items-end">
+            <ul className='flex flex-col md:items-end'>
               {settings?.navSecondary?.map((item, i) => (
                 <li key={i}>
                   {item.link && item.label && item._type === "linkExternal" && (
                     <a
                       href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                      target='_blank'
+                      rel='noopener noreferrer'>
                       {item.label}
                     </a>
                   )}

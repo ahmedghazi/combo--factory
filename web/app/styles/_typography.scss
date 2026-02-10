@@ -1,24 +1,30 @@
+@use "variables";
+
 @font-face {
   font-family: "NTBau-Regular";
-  src: url("./fonts/NTBau-Regular.woff") format("woff"),
+  src:
+    url("./fonts/NTBau-Regular.woff") format("woff"),
     url("./fonts/NTBau-Regular.woff2") format("woff2");
   font-display: swap;
 }
 @font-face {
   font-family: "NTBau-Bold";
-  src: url("./fonts/NTBau-Bold.woff") format("woff"),
+  src:
+    url("./fonts/NTBau-Bold.woff") format("woff"),
     url("./fonts/NTBau-Bold.woff2") format("woff2");
   font-display: swap;
 }
 @font-face {
   font-family: "NTBau-Mono-Regular";
-  src: url("./fonts/NTBau-Mono-Regular.woff") format("woff"),
+  src:
+    url("./fonts/NTBau-Mono-Regular.woff") format("woff"),
     url("./fonts/NTBau-Mono-Regular.woff2") format("woff2");
   font-display: swap;
 }
 @font-face {
   font-family: "VCGosh-Bold";
-  src: url("./fonts/VCGosh-Bold.woff") format("woff"),
+  src:
+    url("./fonts/VCGosh-Bold.woff") format("woff"),
     url("./fonts/VCGosh-Bold.woff2") format("woff2");
   font-display: swap;
 }
@@ -169,7 +175,10 @@ p,
 }
 
 .tabnum {
-  font-feature-settings: "tnum" on, "lnum" on, "case" on;
+  font-feature-settings:
+    "tnum" on,
+    "lnum" on,
+    "case" on;
 }
 
 .strong,
@@ -205,7 +214,7 @@ hr {
   background-color: var(--color-primary);
   border: 0;
   height: 1px;
-  margin: 1.1em calc(var(--space-sm) * -1);
+  margin: 1.1em calc(var(--spacing-sm) * -1);
 }
 
 pre {
@@ -246,8 +255,10 @@ sup {
 sub {
   top: 0.5ex;
 }
-
-@media all and (max-width: $md) {
+.underline {
+  text-decoration: underline;
+}
+@media all and (max-width: variables.$md) {
   body {
     font-size: var(--text-m-md);
   }

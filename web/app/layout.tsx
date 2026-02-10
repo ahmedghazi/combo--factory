@@ -1,5 +1,5 @@
-import "./styles/tailwind.css";
 import "./styles/index.scss";
+import "./global.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import website from "./config/website";
@@ -26,25 +26,20 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const settings = await getSettings();
-  const { isEnabled } = await draftMode();
   return (
     <html lang="fr">
-      <body className={""}>
+      <body className={""} data-theme="theme-xyz">
         {/* <PageTransition> */}
         <LocaleContextProvider>
           <PageContextProvider>
             <div id="page">
-              {/* <pre>{JSON.stringify(settings, null, 2)}</pre> */}
               <Header settings={settings} />
 
               <main>{children}</main>
               <Footer settings={settings} />
               {/* <Cursor color="#fff" size={10} /> */}
-              {isEnabled && (
-                <VisualEditing
-                  zIndex={1000} // Optional
-                />
-              )}
+
+              {(await draftMode()).isEnabled && <VisualEditing />}
               <CookieConsent legals={settings.legalsUrl} />
             </div>
           </PageContextProvider>

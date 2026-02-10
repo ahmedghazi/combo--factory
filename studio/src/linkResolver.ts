@@ -1,5 +1,4 @@
 import {defineLocations, PresentationPluginOptions} from 'sanity/presentation'
-import pageModulaire from '../schemaTypes/documents/pageModulaire'
 
 export const linkResolver: PresentationPluginOptions['resolve'] = {
   locations: {
@@ -11,59 +10,19 @@ export const linkResolver: PresentationPluginOptions['resolve'] = {
         slug: 'slug.current',
       },
       // Those fields are available in the resolve callback function
-      resolve: (doc: {title?: string; slug?: string; homePage?: boolean}) => ({
-        locations: [
-          {
-            title: doc?.title || 'Untitled',
-            href: '/',
-          },
-          // {title: 'Home', href: `/`},
-        ],
+      resolve: (doc) => ({
+        locations: [{title: doc?.title || 'Home', href: `/`}],
       }),
     }),
+
     pageModulaire: defineLocations({
       // Select one or more fields
       select: {
         title: 'title.fr',
         slug: 'slug.current',
-        homePage: 'homePage',
       },
       // Those fields are available in the resolve callback function
-      resolve: (doc: {title?: string; slug?: string; homePage?: boolean}) => ({
-        locations: [
-          {
-            title: doc?.title || 'Untitled',
-            href: `/${doc?.slug}`,
-          },
-          // {title: 'Home', href: `/`},
-        ],
-      }),
-    }),
-    product: defineLocations({
-      // Select one or more fields
-      select: {
-        title: 'title',
-        slug: 'slug.current',
-      },
-      // Those fields are available in the resolve callback function
-      resolve: (doc: {title?: string; slug?: string}) => ({
-        locations: [
-          {
-            title: doc?.title || 'Untitled',
-            href: `/product/${doc?.slug}`,
-          },
-          // {title: 'Home', href: `/`},
-        ],
-      }),
-    }),
-    infos: defineLocations({
-      // Select one or more fields
-      select: {
-        title: 'title',
-        slug: 'slug.current',
-      },
-      // Those fields are available in the resolve callback function
-      resolve: (doc: {title?: string; slug?: string}) => ({
+      resolve: (doc) => ({
         locations: [
           {
             title: doc?.title || 'Untitled',

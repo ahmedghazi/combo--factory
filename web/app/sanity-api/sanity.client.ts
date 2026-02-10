@@ -7,6 +7,7 @@ import {
 } from "@sanity/client";
 import { projectId, dataset, apiVersion, token, studioUrl } from "./sanity.api";
 // import { draftMode } from "next/headers";
+// import { draftMode } from "next/headers";
 
 const config: ClientConfig = {
   projectId,
@@ -14,6 +15,7 @@ const config: ClientConfig = {
   apiVersion,
   // set CDN to live API in development mode
   useCdn: process.env.NODE_ENV === "development" ? true : false,
+  // perspective: draftMode().isEnabled ? "previewDrafts" : "published",
   token,
 };
 
@@ -30,6 +32,7 @@ export function getClient(preview?: { token?: string }): SanityClient {
     if (!preview.token) {
       throw new Error("You must provide a token to preview drafts");
     }
+    // console.log({ studioUrl });
     return client.withConfig({
       token: preview.token,
       useCdn: false,
@@ -55,7 +58,7 @@ export async function sanityFetch<QueryResponse>({
 }): Promise<QueryResponse> {
   return client.fetch<QueryResponse>(query, qParams, {
     // cache: process.env.NODE_ENV === "development" ? "no-store" : "force-cache",
-    cache: "no-store",
+    cache: process.env.NODE_ENV === "development" ? "no-store" : "force-cache",
     next: { tags },
   });
 }

@@ -1,23 +1,29 @@
 import ContentModulaire from "@/app/components/ContentModulaire";
 import website from "@/app/config/website";
-import { PageModulaire } from "@/app/types/schema";
-import { getClient } from "@/app/sanity-api/sanity.client";
 import {
   getPageModulaire,
   PAGE_MODULAIRE_QUERY,
 } from "@/app/sanity-api/sanity-queries";
-import { Metadata } from "next";
+import { getClient } from "@/app/sanity-api/sanity.client";
+import { PageModulaire } from "@/app/types/schema";
+
+import { Metadata, NextPage } from "next";
 import { draftMode } from "next/headers";
 import React from "react";
-import { notFound } from "next/navigation";
 
-// export const revalidate = 10; // revalidate every hour
-// export const dynamic = "force-dynamic";
+export const revalidate = 3600; // revalidate every hour
+
+type Params = Promise<{ slug: string }>;
+
+type PageProps = {
+  params: Params;
+};
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const data = await getPageModulaire(params.slug);
+  const { slug } = await params;
+  const data = await getPageModulaire(slug);
   return {
     title: `${data?.seo?.metaTitle || data?.title || ""}`,
     description: data?.seo?.metaDescription,
@@ -27,27 +33,20 @@ export async function generateMetadata({
   };
 }
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
-  params,
-}) => {
-  const { isEnabled: preview } = draftMode();
+const Page: NextPage<PageProps> = async ({ params }) => {
+  const { slug } = await params;
+  const { isEnabled } = await draftMode();
   let data: PageModulaire;
-  if (preview) {
+  if (isEnabled) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
       PAGE_MODULAIRE_QUERY,
-      params
+      { slug: slug },
     );
   } else {
-    data = (await getPageModulaire(params.slug)) as PageModulaire;
+    data = (await getPageModulaire(slug)) as PageModulaire;
   }
 
-  if (!data) return notFound();
+  if (!data) return <div>please edit page</div>;
   return (
     <div
       className="template template--page-modulaire"

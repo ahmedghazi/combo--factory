@@ -94,6 +94,12 @@ export default defineType({
       group: 'header',
     }),
     defineField({
+      name: 'footerDark',
+      title: 'Footer Dark ',
+      type: 'boolean',
+      group: 'footer',
+    }),
+    defineField({
       name: 'navSecondary',
       title: 'Naviguation Secondary',
       type: 'array',

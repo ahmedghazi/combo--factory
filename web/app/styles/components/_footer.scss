@@ -1,18 +1,24 @@
+@use "../variables";
+
 footer {
   position: relative;
-  padding: var(--space-50);
+  padding: var(--spacing-50);
   z-index: 1;
   background-color: white;
   color: black;
   font-family: var(--font-primary-mono);
+  &.is-dark {
+    background-color: black;
+    color: white;
+  }
   .logo {
     width: 207px;
     max-width: 100%;
     margin: auto;
   }
 
-  @media all and (max-width: $md) {
-    padding: var(--space-50) var(--space-md);
+  @media all and (max-width: variables.$md) {
+    padding: var(--spacing-50) var(--spacing-md);
     text-align: center;
   }
 }
