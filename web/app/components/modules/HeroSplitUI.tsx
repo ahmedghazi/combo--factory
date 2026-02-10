@@ -22,37 +22,41 @@ const ModuleHeroSplitUI = ({ input }: Props) => {
       <div className='grid grid-cols-2'>
         {itemsLeft && itemsLeft.image && (
           <div className='item'>
-            <Image
-              src={urlFor(itemsLeft?.image.asset, 1500)}
-              alt={itemsLeft.caption || ""}
-              priority={true}
-              width={itemsLeft?.image.asset.metadata.dimensions.width}
-              height={itemsLeft?.image.asset.metadata.dimensions.height}
-              blurDataURL={itemsLeft?.image.asset?.metadata?.lqip}
-              placeholder='blur'
-            />
-            <div className='title headline'>
-              <AOS>
-                <span>{itemsLeft.caption} </span>
-              </AOS>
+            <div className='inner'>
+              <Image
+                src={urlFor(itemsLeft?.image.asset, 1500)}
+                alt={itemsLeft.caption || ""}
+                priority={true}
+                width={itemsLeft?.image.asset.metadata.dimensions.width}
+                height={itemsLeft?.image.asset.metadata.dimensions.height}
+                blurDataURL={itemsLeft?.image.asset?.metadata?.lqip}
+                placeholder='blur'
+              />
+              <div className='title headline'>
+                <AOS>
+                  <span>{itemsLeft.caption} </span>
+                </AOS>
+              </div>
             </div>
           </div>
         )}
         {itemsRight && itemsRight.image && (
           <div className='item'>
-            <Image
-              src={urlFor(itemsRight?.image.asset, 1500)}
-              alt={itemsRight.caption || ""}
-              priority={true}
-              width={itemsRight?.image.asset.metadata.dimensions.width}
-              height={itemsRight?.image.asset.metadata.dimensions.height}
-              blurDataURL={itemsRight?.image.asset?.metadata?.lqip}
-              placeholder='blur'
-            />
-            <div className='title headline'>
-              <AOS delay={0.2}>
-                <span>{itemsRight.caption} </span>
-              </AOS>
+            <div className='inner'>
+              <Image
+                src={urlFor(itemsRight?.image.asset, 1500)}
+                alt={itemsRight.caption || ""}
+                priority={true}
+                width={itemsRight?.image.asset.metadata.dimensions.width}
+                height={itemsRight?.image.asset.metadata.dimensions.height}
+                blurDataURL={itemsRight?.image.asset?.metadata?.lqip}
+                placeholder='blur'
+              />
+              <div className='title headline'>
+                <AOS delay={0.2}>
+                  <span>{itemsRight.caption} </span>
+                </AOS>
+              </div>
             </div>
           </div>
         )}

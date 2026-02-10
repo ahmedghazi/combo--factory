@@ -32,6 +32,12 @@
         img {
           height: 100% !important;
         }
+        @media all and (max-width: variables.$sm) {
+          &-0,
+          &-2 {
+            display: none;
+          }
+        }
       }
     }
     &.module--logos-ui {
@@ -301,6 +307,11 @@
       }
     }
     &.module--hero-split-ui {
+      .item {
+        .inner {
+          position: relative;
+        }
+      }
       img {
         height: calc(var(--vh) * 100 - var(--header-h));
         object-fit: cover;

@@ -1,36 +1,6 @@
 "use client";
-import React from "react";
-import dynamic from "next/dynamic";
-// const ModuleTextUI = dynamic(() => import("./TextUI"), { ssr: false });
-// const ModuleHeroUI = dynamic(() => import("./HeroUI"), { ssr: false });
-// const ModuleContactsUI = dynamic(() => import("./ContactsUI"), {
-//   ssr: false,
-// });
-import {
-  CallOutUI,
-  ContactsUI,
-  HeroSplitScrollUI,
-  HeroSplitUI,
-  HeroUI,
-  ImageUI,
-  ListCardImageTextUI,
-  ListLieuUI,
-  ListLModulaireUI,
-  ListStudioUI,
-  ListPageUI,
-  MarqueeUI,
-  SanityKeyed,
-  SliderUI,
-  SplitImageTextUI,
-  TextImageUI,
-  TextUI,
-  SliderCardImageTextUI,
-  TextsUI,
-  ImagesUI,
-  LogosUI,
-} from "../../types/schema";
-
 import "./index.scss";
+import React from "react";
 import ModuleHeroUI from "./HeroUI";
 import ModuleTextUI from "./TextUI";
 import ModuleContactsUI from "./ContactsUI";
@@ -57,7 +27,7 @@ const Modules = ({ modules }: ModulesList) => {
   // console.log(modules);
   const _renderModules = () => {
     const _modules = modules.map((module: ModulesList["modules"][number]) => {
-      // console.log(module._type);
+      console.log(module._type);
       switch (module._type) {
         case "textUI":
           return <ModuleTextUI key={module._key} input={module} />;
@@ -108,7 +78,7 @@ const Modules = ({ modules }: ModulesList) => {
     return _modules;
   };
 
-  return <div className="modules">{_renderModules()}</div>;
+  return <div className='modules'>{_renderModules()}</div>;
 };
 
 export default Modules;
