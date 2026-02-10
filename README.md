@@ -186,12 +186,17 @@ yarn start
 
 ## License
 
-This project is currently marked as:
+This project is proprietary software.
 
-```json
-"license": "UNLICENSED"
-```
+- Copyright 2026 AeAi.
+- All rights reserved.
 
-Please do not redistribute or reuse the code without permission from the owner.
+The client is granted a non-exclusive, perpetual license to use, run, and modify this codebase for their own internal business purposes. No rights are granted to sublicense, resell, or redistribute the code or any substantial portion of it to third parties without prior written permission from the copyright holder.
 
-#
+---
+
+## Contact
+
+For questions about licensing or usage, contact:
+
+- **AeAi** – `hello@ahmedghazi.com`
