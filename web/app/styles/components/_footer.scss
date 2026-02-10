@@ -17,8 +17,11 @@ footer {
     margin: auto;
   }
 
-  @media all and (max-width: variables.$md) {
+  @media all and (min-width: variables.$sm) and (max-width: variables.$md) {
     padding: var(--spacing-50) var(--spacing-md);
+    // text-align: center;
+  }
+  @media all and (max-width: variables.$sm) {
     text-align: center;
   }
 }
