@@ -18,7 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export const revalidate = 3600; // revalidate every hour
+export const revalidate = 3600;
+// revalidate every hour
 
 const HomePage = async function Page() {
   const { isEnabled } = await draftMode();
