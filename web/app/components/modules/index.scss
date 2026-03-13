@@ -52,7 +52,7 @@
         color: var(--color, #fff);
         figure {
           position: relative;
-          @include mixins.debugSquare(46px);
+          // @include mixins.debugSquare(46px);
         }
         img {
           height: 79px !important;
